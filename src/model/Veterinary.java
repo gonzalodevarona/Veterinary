@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 17 MARCH 2019
+* @LAST UPDATE DATE: 19 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -61,17 +61,59 @@ public  String convertChoise2Type (int choise){
 
 
 public  String createPerson(Person theNew, ArrayList<Pet> clientsPets){
-	String reply = "New client has been successfully added!";
+	
 
 	client.add(theNew);
 
 	client.get((client.size()) - 1).createPet(clientsPets);
 
+	 String reply  = "*******************************************\n";
+	 reply += "* New client has been successfully added! *\n";
+	 reply += "*******************************************";
 
 
 
 	return reply;
 
+}
+
+public boolean miniRoomAvailable(){
+	boolean reply = false;
+
+	for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
+
+		if(room[i].getAvailable()){reply = true;};
+
+	}
+
+	return reply;
+
+}
+
+
+
+public String showClientsInfo(String clients, String clientsId){
+	String reply = "*******************************************************\n";
+		   reply += "* ERROR: There is not a client with that name and ID. *\n";
+	 	   reply += "*******************************************************";
+	boolean theStop = false;
+
+	for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
+		if ((client.get(i).getName()).equals(clients) && (client.get(i).getId()).equals(clientsId)){
+
+			reply = client.get(i).showMyinfo();
+			theStop = true;
+
+		}
+
+		
+
+		
+	}
+
+
+return reply;		
 }
 
 

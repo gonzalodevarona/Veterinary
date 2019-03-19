@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 17 MARCH 2019
+* @LAST UPDATE DATE: 18 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -30,17 +30,21 @@ private String status;
 
 
 //RELATIONSHIPS
+private DateIn dateInn;
+private DateIn dateOut;
 
 
 
 //METHODS
 
-public MedRecord(String petInfo, String ownerInfo, String symptoms, String diagnosys, String status){
+public MedRecord(String petInfo, String ownerInfo, String symptoms, String diagnosys, String status, DateIn dateInn, DateIn dateOut){
 	this.petInfo = petInfo;
 	this.ownerInfo = ownerInfo;
 	this.symptoms = symptoms;
 	this.diagnosys = diagnosys;
 	this.status = status;
+	this.dateInn = dateInn;
+	this.dateOut = dateOut;
 }
 
 
@@ -98,6 +102,25 @@ public void setStatus(String status) {
 }
 
 
+public  DateIn getDateInn() {
+return dateInn;
+}
+
+
+public void setDateInn(DateIn dateInn) {
+	this.dateInn = dateInn;
+}
+
+
+
+public  DateIn getDateOut() {
+return dateOut;
+}
+
+
+public void setDateOut(DateIn dateOut) {
+	this.dateOut = dateOut;
+}
 
 
 

@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 17 MARCH 2019
+* @LAST UPDATE DATE: 19 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -107,6 +107,23 @@ return hospitalizedNow;
 
 public void setHospitalizedNow(boolean hospitalizedNow) {
 	this.hospitalizedNow = hospitalizedNow;
+}
+
+
+
+public String showPetsinfo(){
+	String reply = "";
+
+	
+	reply += "| Pet's name is: "+name+"\n";
+	reply += "| Pet's species is: "+type+"\n";
+	reply += "| Pet's age is: "+age+" year(s) old\n";
+	reply += "| Pet's weight is: "+weight+" Kg\n";
+	reply += "| \n";
+	
+
+	return reply;
+
 }
 
 

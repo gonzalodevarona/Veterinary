@@ -1,3 +1,5 @@
+
+
 /*
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 * ID
@@ -5,7 +7,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 17 MARCH 2019
+* @LAST UPDATE DATE: 19 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package ui;
@@ -39,8 +41,13 @@ public Main (){
 
 
 public void init(){
+	//Pet benji = new Pet("Benji", "Cat", 1.0, 15.0, false, false);
+	//Person gonza = new Person("Gonzalo De Varona", 1006078287, "Infinite Loop", 1127061833);
 
-goForIt = new Veterinary();	
+	//Pet rocco = new Pet("Rocco", "Dog", 1.0, 23.0, false, false);
+	//Person andrea = new Person("Andrea Melendez", 1003274632, "Infinite Loop", 1135625927);
+
+	goForIt = new Veterinary();	
 	
 }
 
@@ -112,7 +119,7 @@ goForIt = new Veterinary();
 
 			showMenuOptions();
 
-					System.out.println("--------------------------------------");
+			System.out.println("--------------------------------------");
 			System.out.print("| Type the number of your selection: ");
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -121,130 +128,57 @@ goForIt = new Veterinary();
 			switch (userInput) {
 
 				//REGISTER A NEW CLIENT
-				case 1: System.out.println("");
-						System.out.print("Please type the client's name: "); String name = reader.nextLine();
-						System.out.print("Please type the client's ID: "); int id = reader.nextInt(); reader.nextLine();
-						System.out.print("Please type the client's address: "); String address = reader.nextLine();
-						System.out.print("Please type the client's phone number: "); int phone = reader.nextInt(); reader.nextLine();
-						System.out.println("");
-
-						
-
-						System.out.print("How many pets of the client are customers here?\n"); int loopsy = reader.nextInt(); reader.nextLine();
-
-						ArrayList<Pet> clientsPets = new ArrayList();
-
-							for(int i = 0; i < loopsy; i++){
-
-								System.out.print("Please type the pet's name: "); String petsName = reader.nextLine();
-								System.out.println("");
-								System.out.println("Please choose the pet's species: "); 
-								System.out.println("1. Dog.");
-								System.out.println("2. Cat.");
-								System.out.println("3. Bird.");
-								System.out.println("4. Other.");
-								System.out.println("");
-								typeSelectionMssg();
-								int choise = reader.nextInt(); reader.nextLine();
-								plainLine();
-								System.out.println("");
-
-								String species = goForIt.convertChoise2Type(choise);
-
-
-								
-								System.out.print("Please type the pet's age (years): "); int age = reader.nextInt(); reader.nextLine();
-								System.out.println("");
-								System.out.print("How much does the pet weight (Kg)? "); double weight = reader.nextDouble(); reader.nextLine();
-								System.out.println("");
-								System.out.println("");
-
-								Pet theNewPet = new Pet(petsName, species, age, weight);
-
-								clientsPets.add(theNewPet);
-							}
-
-
-						Person theNew = new Person(name, id, address, phone);
-
-						System.out.println(goForIt.createPerson(theNew, clientsPets));
-						System.out.println("");
-						
-
-
-						
-				break;
+				case 1: 
+					registerANewClient();
+					break;
 
 				//SHOW CLIENTS & PETS INFORMATION
 				case 2: 
-
-				break; 
+					clientsInfoByGivenName();
+					break; 
 
 
 				//SHOW CONTACT INFORMATION FROM A CLIENT
 				case 3: 
-				
-
-
-				break;
+					break;
 
 
 				//HOSPITALIZE A PET
 				case 4:
+					break; 
 
-				break; 
-
-				//CALCULATE HOSPITALIZATION FEE
+				//
 				case 5: 
-
-				break; 
+					break; 
 
 				//DISCHARGE A PET
 				case 6:
-
-
-				break;
+					break;
 
 				//SHOW INCOME FOR HOSPITALIZATIONS
 				case 7:
-
-
-				break;
+					break;
 
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
 				case 8: 
-
-				break;
+					break;
 
 				//SHOW ALL RECORDS
 				case 9:
-
-
-				break;
+					break;
 
 
 				//QUIT PROGRAM
-				case 10: System.out.print("\033[H\033[2J");  
-    					System.out.flush(); 
-						System.out.println("");
-						System.out.println("THANK YOU FOR USING MY LIL PET SOFTWARE");
-						System.out.println("");
-
-
-				break;
+				case 10: 
+					theGoodbye();
+					break;
 
 				default:
-
-				break;
-			
-				
-
-				
-				
+					break;
 				
 			}
 
-			}
+		}
 		
 
 		
@@ -264,6 +198,105 @@ goForIt = new Veterinary();
 
 
 	}
+
+	public void registerANewClient() {
+		System.out.println("");
+		System.out.print("Please type the client's name: "); String name = reader.nextLine();
+		System.out.print("Please type the client's ID: "); String id = reader.nextLine();
+		System.out.print("Please type the client's address: "); String address = reader.nextLine();
+		System.out.print("Please type the client's phone number: "); String phone = reader.nextLine();
+		System.out.println("");
+
+		
+
+		System.out.print("How many pets of the client are customers here?\n"); int loopsy = reader.nextInt(); reader.nextLine();
+
+		ArrayList<Pet> clientsPets = new ArrayList();
+
+			for(int i = 0; i < loopsy; ++i){
+
+				System.out.println("");
+				System.out.println("");
+				System.out.println("----------------------------------------------------------------------------");
+				System.out.print("Please type the pet's name: "); String petsName = reader.nextLine();
+				System.out.println("");
+				System.out.println("Please choose the pet's species: "); 
+				System.out.println("1. Dog.");
+				System.out.println("2. Cat.");
+				System.out.println("3. Bird.");
+				System.out.println("4. Other.");
+				System.out.println("");
+				typeSelectionMssg();
+				int choise = reader.nextInt(); reader.nextLine();
+				plainLine();
+				System.out.println("");
+
+				String species = goForIt.convertChoise2Type(choise);
+
+				System.out.print("Please type the pet's age (years): "); int age = reader.nextInt(); reader.nextLine();
+				System.out.println("");
+				System.out.print("How much does the pet weight (Kg)? "); double weight = reader.nextDouble(); reader.nextLine();
+				System.out.println("");
+				System.out.println("");
+
+				
+
+					if(species.equals("ERROR: Invalid species selection.")){
+					System.out.println(species);
+					--i;
+
+
+					} else{ Pet theNewPet = new Pet(petsName, species, age, weight);
+							clientsPets.add(theNewPet);
+					}
+
+				
+			}
+				
+
+		
+
+
+				
+			Person theNew = new Person(name, id, address, phone);
+			System.out.println(goForIt.createPerson(theNew, clientsPets));
+			System.out.println("");
+
+			
+
+
+		
+	}
+
+
+
+	public void clientsInfoByGivenName(){
+
+		System.out.println("");
+		System.out.print("Please type the client's name to get his/her information: "); String clients = reader.nextLine();
+		System.out.print("Please type the client's ID to get his/her information: "); String clientsId = reader.nextLine();
+		System.out.println("");
+		System.out.println(goForIt.showClientsInfo(clients, clientsId));
+		System.out.println("");
+
+
+	}
+
+
+	
+
+
+	public void theGoodbye() {
+		System.out.print("\033[H\033[2J");  
+		System.out.flush(); 
+		System.out.println("");
+		System.out.println("THANK YOU FOR USING MY LIL PET SOFTWARE");
+		System.out.println("");
+	}
+						
+
+
+						
 
 
 } //final
