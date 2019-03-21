@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 19 MARCH 2019
+* @LAST UPDATE DATE: 21 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -30,6 +30,8 @@ private double age;
 private double weight;
 private boolean hospitalizedBefore;
 private boolean hospitalizedNow;
+private ArrayList<MedRecord> record;
+private Person owner;
 
 
 //RELATIONSHIPS
@@ -38,13 +40,15 @@ private boolean hospitalizedNow;
 
 //METHODS
 
-public Pet(String name, String type, double age, double weight){
+public Pet(String name, String type, double age, double weight, boolean hospitalizedBefore, boolean hospitalizedNow, Person owner){
 	this.name = name;
 	this.type = type;
 	this.age = age;
 	this.weight = weight;
-	this.hospitalizedBefore = false;
-	this.hospitalizedNow = false;
+	this.hospitalizedBefore = hospitalizedBefore;
+	this.hospitalizedNow = hospitalizedBefore;
+	this.owner = owner;
+	record = new ArrayList<MedRecord>();
 }
 
 
@@ -125,6 +129,9 @@ public String showPetsinfo(){
 	return reply;
 
 }
+
+
+
 
 
 

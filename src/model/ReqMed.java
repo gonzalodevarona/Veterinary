@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 16 MARCH 2019
+* @LAST UPDATE DATE: 21 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -17,7 +17,7 @@ public class ReqMed{
 private String name;
 private double dose;
 private double pricePerDose;
-private String time;
+private String frecuency;
 
 
 //RELATIONSHIPS
@@ -26,11 +26,11 @@ private String time;
 
 //METHODS
 
-public ReqMed(String name, double dose, double pricePerDose, String time){
+public ReqMed(String name, double dose, double pricePerDose, String frecuency){
 	this.name = name;
 	this.dose = dose;
 	this.pricePerDose = pricePerDose;
-	this.time = time;
+	this.frecuency = frecuency;
 }
 
 
@@ -66,13 +66,13 @@ public void setpricePerDose(double pricePerDose) {
 
 
 
-public  String getTime() {
-return time;
+public  String getFrecuency() {
+return frecuency;
 }
 
 
-public void setTime(String time) {
-	this.time = time;
+public void setFrecuency(String frecuency) {
+	this.frecuency = frecuency;
 }
 
 

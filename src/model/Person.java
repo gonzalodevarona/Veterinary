@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 19 MARCH 2019
+* @LAST UPDATE DATE: 21 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -110,6 +110,39 @@ public String showMyinfo(){
 
 	return reply;
 
+}
+
+
+
+public String contactInfo(){
+	String reply = "";
+
+	reply += "+--------------------------------------------------------------+\n";
+	reply += "| The owner's name is: "+name+"\n";
+	reply += "| The owner's id is: "+id+"\n";
+	reply += "| The owner's address is: "+address+"\n";
+	reply += "| The owner's phone number is: "+phone+"\n";
+	reply += "+--------------------------------------------------------------+\n";
+
+
+	return reply;
+}
+
+
+public boolean reviewPet(String theName){
+
+	boolean hasIt = false;
+
+	for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
+
+		if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
+
+			hasIt = true;
+		}
+
+	}
+
+	return hasIt;
 }
 
 
