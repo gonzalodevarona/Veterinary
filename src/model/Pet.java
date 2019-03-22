@@ -139,9 +139,14 @@ public void addMedRec(MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 
 	record.get(record.size()-1).addMeds(petsMeds);
 
+}
 
-
-
+public double gatherCosts(){
+	double full = 0.0;
+	for (int i = 0; i < record.size(); i++ ) {
+		full += record.get(i).getFee();
+	}
+	return full;
 }
 
 

@@ -255,8 +255,7 @@ public double calculatingFee(){
 
 			for (int i = 0; i < med.size(); i++ ) {
 					total += med.get(i).priceMed();
-
-					}
+			}
 
 	} else { int dayE = dateOut.getDay();
 			
@@ -349,8 +348,7 @@ public double calculatingFee(){
 			}
 			for (int in = 0; in < med.size(); in++ ) {
 					total += med.get(in).priceMed();
-
-					}
+			}
 	}
 
 

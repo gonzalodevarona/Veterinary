@@ -189,6 +189,18 @@ public Pet givePet(String theName){
 }
 
 
+public double myBill(){
+	double bill = 0.0;
+
+	for (int i = 0; i < animal.size(); i++ ) {
+
+		bill += animal.get(i).gatherCosts();
+	}
+
+	return bill;
+}
+
+
 
 
 

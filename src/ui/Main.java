@@ -200,7 +200,7 @@ private Veterinary goForIt;
 					break;
 
 				//SHOW INCOME FOR HOSPITALIZATIONS
-				case 8:
+				case 8: showIncome();
 					break;
 
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
@@ -454,10 +454,14 @@ private Veterinary goForIt;
 
 		} else {System.out.println("ERROR: All rooms are occupied.");}
 
-			
-		
+	}
 
 
+	public void showIncome(){
+
+		System.out.println("");
+		System.out.println("This is the income for every hospitalization: "+goForIt.gatherAllFees()+" COP");
+		System.out.println("");
 
 	}
 

@@ -277,6 +277,19 @@ public class Veterinary{
 	}
 
 
+	public double gatherAllFees(){
+		double income = 0.0;
+
+	for (int i = 0; i < client.size(); i++ ) {
+
+		income += client.get(i).myBill();
+	}
+
+	return income;
+
+	}
+
+
 
 
 
