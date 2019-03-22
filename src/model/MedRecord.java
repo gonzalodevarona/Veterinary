@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 21 MARCH 2019
+* @LAST UPDATE DATE: 22 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -34,22 +34,24 @@ private double fee;
 //RELATIONSHIPS
 private DateIn dateInn;
 private DateIn dateOut;
+private Pet sick;
 private ArrayList<ReqMed> med;
 
 
 
 //METHODS
 
-public MedRecord(String petInfo, String ownerInfo, String symptoms, String diagnosys, String status, DateIn dateInn){
+public MedRecord(String petInfo, String ownerInfo, String symptoms, String diagnosys, String status, DateIn dateInn, Pet sick){
 	this.petInfo = petInfo;
 	this.ownerInfo = ownerInfo;
 	this.symptoms = symptoms;
 	this.diagnosys = diagnosys;
 	this.status = status;
-	this.fee = fee; //make method for calculating fee
 	this.dateInn = dateInn;
+	this.sick = sick;
 	this.dateOut = dateOut;
 	med = new ArrayList<ReqMed>();
+	this.fee = calculatingFee(); 
 	
 }
 
@@ -130,6 +132,17 @@ public void setDateOut(DateIn dateOut) {
 
 
 
+public  Pet getSick() {
+return sick;
+}
+
+
+public void setSick(Pet sick) {
+	this.sick = sick;
+}
+
+
+
 public  double getFee() {
 return fee;
 }
@@ -137,6 +150,211 @@ return fee;
 
 public void setFee(double fee) {
 	this.fee = fee;
+}
+
+public void addMeds(ArrayList<ReqMed> petsMeds){
+	med = petsMeds;
+
+
+}
+
+
+
+public double calculatingFee(){
+	double total = 0.0;
+
+	if (dateOut == null){
+
+		Calendar today = new GregorianCalendar();
+			int monthT = today.get(Calendar.MONTH) + 1;
+			int dayT = today.get(Calendar.DATE);
+			int yearT = today.get(Calendar.YEAR);
+
+
+			dayT -= dateInn.getDay();
+			
+			monthT = (monthT - dateInn.getMonth()) * 30;
+			
+			yearT = (yearT - dateInn.getYear()) * 360;
+		
+			int daysDifference = (dayT + monthT + yearT);
+
+
+			switch (sick.getType()) {
+
+				case Pet.DOG:
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifference * 15000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifference * 17000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifference * 20000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifference * 25000);
+
+					}
+
+				break;
+				case Pet.CAT:
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifference * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifference * 12000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifference * 15000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifference * 20000);
+
+					}
+
+				break;
+				case Pet.BIRD: 
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifference * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifference * 12000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifference * 20000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifference * 25000);
+
+					}
+
+				break;
+				case Pet.OTHER:
+
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifference * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifference * 17000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifference * 30000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifference * 33000);
+
+					}
+				break;
+					
+			}
+
+			for (int i = 0; i < med.size(); i++ ) {
+					total += med.get(i).priceMed();
+
+					}
+
+	} else { int dayE = dateOut.getDay();
+			
+			int monthE = dateOut.getMonth();
+			
+			int yearE = dateOut.getYear();
+
+
+
+			dayE -= dateInn.getDay();
+			
+			monthE = (monthE - dateInn.getMonth()) * 30;
+			
+			yearE = (yearE - dateInn.getYear()) * 360;
+
+			int daysDifferenceWithEndDate = (dayE + monthE+ yearE);
+
+
+			switch (sick.getType()) {
+
+				case Pet.DOG:
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifferenceWithEndDate * 15000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifferenceWithEndDate * 17000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifferenceWithEndDate * 20000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifferenceWithEndDate * 25000);
+
+					}
+
+				break;
+				case Pet.CAT:
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifferenceWithEndDate * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifferenceWithEndDate * 12000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifferenceWithEndDate * 15000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifferenceWithEndDate * 20000);
+
+					}
+
+				break;
+				case Pet.BIRD: 
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifferenceWithEndDate * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifferenceWithEndDate * 12000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifferenceWithEndDate * 20000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifferenceWithEndDate * 25000);
+
+					}
+
+				break;
+				case Pet.OTHER:
+
+
+					if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
+						total = (double)(daysDifferenceWithEndDate * 10000);
+						
+					} else if(sick.getWeight() > 3.0 && sick.getWeight() <= 10.0 ){
+						total = (double)(daysDifferenceWithEndDate * 17000);
+
+					} else if(sick.getWeight() > 10.0 && sick.getWeight() <= 20.0 ){
+						total = (double)(daysDifferenceWithEndDate * 30000);
+
+					} else if(sick.getWeight() > 20.0){
+						total = (double)(daysDifferenceWithEndDate * 33000);
+
+					}
+				break;
+					
+			}
+			for (int in = 0; in < med.size(); in++ ) {
+					total += med.get(in).priceMed();
+
+					}
+	}
+
+
+	return total;
 }
 
 

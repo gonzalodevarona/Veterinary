@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 21 MARCH 2019
+* @LAST UPDATE DATE: 22 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -82,12 +82,12 @@ public class Veterinary{
 
 	}
 
-	public String miniRoomAvailable(){
-		String reply =  "ERROR: All mini rooms are occupied";
+	public boolean miniRoomAvailable(){
+		boolean reply =  false;
 
-		for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
+		for(int i = 0 ; i < MiniRoom.ALLROOMS && !reply ; i++){
 
-			if(room[i].getAvailable()){reply = "";};
+			if(room[i].getAvailable()){reply = true;};
 
 		}
 
@@ -203,6 +203,78 @@ public class Veterinary{
 		return message;
 	}
 
+
+	public boolean checkOwner(String name, String id, String petsName){
+		boolean isReal = false;
+		String evaluation = showClientsInfo(name, id);
+
+		if(evaluation.charAt(0) != '*' && evaluation.toLowerCase().contains(petsName.toLowerCase())){
+
+			isReal = true;
+		}
+
+		return isReal;
+
+	}
+
+
+	public void startHospitalizeVet(String name, String id, String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
+		boolean theStop = false;
+		int i = 0;
+
+		while(i < client.size() && !theStop){
+			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
+				
+				theStop = true;
+				client.get(i).startHospitalizePers(petsName, newMedRec, petsMeds);
+				
+
+			}
+			++i;
+		}
+
+		Pet relationship = client.get(i).givePet(petsName);
+		
+
+		boolean theStop2 = false;
+		for (int in = 0; in < MiniRoom.ALLROOMS && !theStop2 ; in++ ) {
+
+			if (room[in].getAvailable()){
+
+				room[in].setOwner(name);
+				room[in].setPet(petsName);
+				room[in].setHostage(relationship);
+				room[in].setAvailable(false);
+
+			}
+
+		}
+
+		
+
+
+	}
+
+
+
+	public Pet retrievePet(String name, String  id, String  petsName){
+		
+		boolean theStop = false;
+		int i = 0;
+
+		while(i < client.size() && !theStop){
+			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
+				
+				theStop = true;
+			}
+			++i;
+		}
+
+		Pet relationshipOfPet = client.get(i).givePet(petsName);
+
+		return relationshipOfPet;
+
+	}
 
 
 

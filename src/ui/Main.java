@@ -7,7 +7,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 21 MARCH 2019
+* @LAST UPDATE DATE: 22 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package ui;
@@ -106,7 +106,7 @@ private Veterinary goForIt;
 		System.out.println("");
 		System.out.println("1. Register a new client.");
 		System.out.println("2. Show clients & pets information.");
-		System.out.println("3. Show owner's contact information from a hospitalized pet by typing client's full name or pet's full name.");
+		System.out.println("3. Show person’s contact info of a hospitalized pet by putting owner’s name or pet’s name");
 		System.out.println("4. Hospitalize a pet.");
 		System.out.println("5. Show medical records from hospitalized pets.");
 		System.out.println("6. Edit a medical record from a pet.");
@@ -176,7 +176,7 @@ private Veterinary goForIt;
 					break; 
 
 
-				//SHOW OWNER'S CONTACT INFORMATION FROM A HOSPITALIZED PET BY TYPING CLIENT'S NAME OR PET'S NAME
+				//SHOW PERSON’S CONTACT INFO OF A HOSPITALIZED PET BY PUTTING OWNER’S NAME OR PET’S NAME
 				case 3: 
 					contactInfoByNameOrPet(); 
 					break;
@@ -361,7 +361,7 @@ private Veterinary goForIt;
 		plainLine();
 
 		if (kind == 1 || kind == 2) {
-			System.out.print("Please type the name: "); 
+			System.out.print("Please type the full name: "); 
 			String theName = reader.nextLine();
 			System.out.println("");
 
@@ -380,64 +380,81 @@ private Veterinary goForIt;
 
 	public void hospitalizeAPet(){
 
-		goForIt.miniRoomAvailable();
-		System.out.println("");
-		System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
-		System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
-		System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
-		System.out.println("");
-		System.out.println("");
+		if(goForIt.miniRoomAvailable()){
 
-		System.out.println("*************************************************");
-		System.out.println("*** NEEDED INFORMATION FOR THE MEDICAL RECORD ***");
-		System.out.println("*************************************************");
-
-		System.out.println("");
-		System.out.print("Please type the day that the pet got hospitalized: "); int day = reader.nextInt(); reader.nextLine();
-		System.out.print("Please type the month that the pet got hospitalized: "); int month = reader.nextInt(); reader.nextLine();
-		System.out.print("Please type the year that the pet got hospitalized: "); int year = reader.nextInt(); reader.nextLine();
-
-		Calendar today = new GregorianCalendar();
-			int yearT = today.get(Calendar.YEAR);
-
-		if (year <= yearT ) {
-
-			DateIn newDateIn = new DateIn(day, month, year);
-			System.out.print("Please type the pet's symptoms, if you do not know them just hit ENTER and add them later: "); String symptoms = reader.nextLine();
-			System.out.print("Please type the pet's diagnosys, if you do not know it just hit ENTER and add it later: "); String diagnosys = reader.nextLine();
+			System.out.println("");
+			System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
+			System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
+			System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
+			System.out.println("");
 			System.out.println("");
 
-			MedRecord newMedRec = new MedRecord("", "", symptoms, diagnosys, "Open", newDateIn);
+			if(goForIt.checkOwner(name, id, petsName)){
 
-			System.out.println("******************");
-			System.out.println("*** MEDICATION ***");
-			System.out.println("******************");
-			System.out.println("");
-			System.out.print("How many prescribed medicines does the pet have?\n"); int quantity = reader.nextInt(); reader.nextLine();
+				System.out.println("*************************************************");
+				System.out.println("*** NEEDED INFORMATION FOR THE MEDICAL RECORD ***");
+				System.out.println("*************************************************");
 
+				System.out.println("");
+				System.out.print("Please type the day that the pet got hospitalized: "); int day = reader.nextInt(); reader.nextLine();
+				System.out.print("Please type the month that the pet got hospitalized: "); int month = reader.nextInt(); reader.nextLine();
+				System.out.print("Please type the year that the pet got hospitalized: "); int year = reader.nextInt(); reader.nextLine();
 
-			ArrayList<ReqMed> petsMeds = new ArrayList<ReqMed>();
+				Calendar today = new GregorianCalendar();
+					int yearT = today.get(Calendar.YEAR);
 
-				for(int i = 0; i < quantity; ++i){
+				if (year <= yearT ) {
+
+					DateIn newDateIn = new DateIn(day, month, year);
+					System.out.print("Please type the pet's symptoms, if you do not know them just press ENTER and add them later: "); String symptoms = reader.nextLine();
+					System.out.print("Please type the pet's diagnosys, if you do not know it just press ENTER and add it later: "); String diagnosys = reader.nextLine();
 					System.out.println("");
-					System.out.println("___________________________________________________________________");
-					System.out.print("Please type the medicine's name: "); String medsName = reader.nextLine();
-					System.out.print("Please type the medicine's dose: "); double medsDose = reader.nextDouble(); reader.nextLine();
-					System.out.print("Please type the medicine's price per dose: "); double medsPrice = reader.nextDouble(); reader.nextLine();
-					System.out.print("Please type the medicine's frecuency: "); String medsFrecuency = reader.nextLine();
 
-					ReqMed newMed = new ReqMed(medsName, medsDose, medsPrice, medsFrecuency);
+					Pet sickPet = goForIt.retrievePet(name, id, petsName);
 
-					if(!(medsName.equals("")) && medsDose != 0 && medsPrice != 0 && !(medsFrecuency.equals(""))){
-						petsMeds.add(newMed);
+					MedRecord newMedRec = new MedRecord("", "", symptoms, diagnosys, "Open", newDateIn, sickPet);
+
+					System.out.println("******************");
+					System.out.println("*** MEDICATION ***");
+					System.out.println("******************");
+					System.out.println("");
+					System.out.print("How many prescribed medicines does the pet have?\n"); int quantity = reader.nextInt(); reader.nextLine();
+
+
+					ArrayList<ReqMed> petsMeds = new ArrayList<ReqMed>();
+
+					for(int i = 0; i < quantity; ++i){
+
+						System.out.println("");
+						System.out.println("___________________________________________________________________");
+						System.out.print("Please type the medicine's name: "); String medsName = reader.nextLine();
+						System.out.print("Please type the medicine's dose: "); double medsDose = reader.nextDouble(); reader.nextLine();
+						System.out.print("Please type the medicine's price per dose: "); double medsPrice = reader.nextDouble(); reader.nextLine();
+						System.out.print("Please type the medicine's frecuency: "); String medsFrecuency = reader.nextLine();
+
+						ReqMed newMed = new ReqMed(medsName, medsDose, medsPrice, medsFrecuency);
+
+						if(!(medsName.equals("")) && medsDose != 0 && medsPrice != 0 && !(medsFrecuency.equals(""))){
+							petsMeds.add(newMed);
+						}
 
 					}
 
-				}
+					goForIt.startHospitalizeVet(name, id, petsName, newMedRec, petsMeds);
+
+					System.out.println("");
+					System.out.println(petsName+" was successfully hospitalized!");
+					System.out.println("");
+				
+
+				} else {System.out.println("ERROR: Invalid date.");}
+
+			} else {System.out.println("ERROR: No match found.");}
+
+
+		} else {System.out.println("ERROR: All rooms are occupied.");}
+
 			
-
-		} else {System.out.println("ERROR: Invalid date.");}
-
 		
 
 

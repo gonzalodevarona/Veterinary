@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 21 MARCH 2019
+* @LAST UPDATE DATE: 22 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -145,6 +145,48 @@ public boolean reviewPet(String theName){
 	return hasIt;
 }
 
+
+
+public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
+
+
+	boolean found = false;
+
+	for (int i = 0; i < animal.size() && !found ; i++ ) {
+
+		if ((animal.get(i).getName()).equalsIgnoreCase(petsName)) {
+
+			found = true;
+
+			animal.get(i).addMedRec( newMedRec, petsMeds);
+
+		}
+
+	}
+
+
+
+}
+
+
+
+public Pet givePet(String theName){
+
+	Pet found = null;
+	boolean hasIt = false;
+
+	for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
+
+		if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
+
+			hasIt = true;
+			found = animal.get(i);
+		}
+
+	}
+
+	return found;
+}
 
 
 
