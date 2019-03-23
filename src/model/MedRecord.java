@@ -381,10 +381,17 @@ public String medRecordInfo(){
 		   reply += petInfo;
 		   reply += ownerInfo;
 		   reply += "|\n";
+		   reply += "| The date when this hospitalization started is: " +dateInn.convertDateToString()+"\n";
+
+		   if (dateOut != null) {
+		   reply += "| The date when this hospitalization ended is:" +dateOut.convertDateToString()+"\n";
+		   }
+		   
 		   reply += "| The symptoms are: "+symptoms+"\n";
 		   reply += "| The diagnosys is: "+diagnosys+"\n";
 		   reply += "| The status is: "+status+"\n";
 		   reply += "| The cost is: "+fee+"\n";
+		   reply += "|\n";
 		   reply += "+-----------------------------------------------------------------------------+\n";
 		   reply += "| Prescribed medications:\n";
 		   reply += "|\n";

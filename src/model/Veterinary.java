@@ -324,6 +324,27 @@ public class Veterinary{
 		}
 
 
+		public String showAPetMedRecs(String name, String  id, String  petsName){
+		boolean theStop = false;
+		String reply = "";
+		
+		
+
+		for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
+			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
+				
+				theStop = true;
+				reply += client.get(i).givePet(petsName).showAllRecords();
+				
+
+			}
+		}
+
+		return reply;
+
+	}
+
 
 
 

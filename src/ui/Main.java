@@ -209,7 +209,7 @@ private Veterinary goForIt;
 					break;
 
 				//SHOW RECORDS FROM A PET
-				case 10:
+				case 10: showAllMedRecs4Pet();
 					break;
 
 
@@ -485,6 +485,27 @@ private Veterinary goForIt;
 		System.out.println("The number of the mini room occupied by " +petsName+ " is " +goForIt.retrieveNumberMiniRoom(petsName));
 	}
 
+
+	public void showAllMedRecs4Pet(){
+		System.out.println("");
+		System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
+		System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
+		System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
+		System.out.println("");
+
+		if(goForIt.checkOwner(name, id, petsName)){
+
+			String records = goForIt.showAPetMedRecs(name, id, petsName);
+
+			if(records.equals("")){
+				System.out.println("This pet does not have any medical record.");
+			}else{System.out.println("");
+			System.out.println(records);}
+
+		} else{System.out.println("ERROR: No match found");}
+
+
+	}
 
 
 
