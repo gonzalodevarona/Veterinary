@@ -28,8 +28,7 @@ private String name;
 private String type;
 private double age;
 private double weight;
-private boolean hospitalizedBefore;
-private boolean hospitalizedNow;
+
 
 
 
@@ -42,13 +41,12 @@ private Person owner;
 
 //METHODS
 
-public Pet(String name, String type, double age, double weight, boolean hospitalizedBefore, boolean hospitalizedNow, Person owner){
+public Pet(String name, String type, double age, double weight, Person owner){
 	this.name = name;
 	this.type = type;
 	this.age = age;
 	this.weight = weight;
-	this.hospitalizedBefore = hospitalizedBefore;
-	this.hospitalizedNow = hospitalizedBefore;
+
 	this.owner = owner;
 	record = new ArrayList<MedRecord>();
 }
@@ -95,28 +93,6 @@ public void setWeight(double weight) {
 }
 
 
-public  boolean getHospitalizedBefore() {
-return hospitalizedBefore;
-}
-
-
-public void setHospitalizedBefore(boolean hospitalizedBefore) {
-	this.hospitalizedBefore = hospitalizedBefore;
-}
-
-
-
-public  boolean getHospitalizedNow() {
-return hospitalizedNow;
-}
-
-
-public void setHospitalizedNow(boolean hospitalizedNow) {
-	this.hospitalizedNow = hospitalizedNow;
-}
-
-
-
 public String showPetsinfo(){
 	String reply = "";
 
@@ -140,8 +116,6 @@ public void addMedRec(MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 	newMedRec.addMeds(petsMeds);
 	newMedRec.calculatingFee();
 	record.add(newMedRec);
-
-	System.out.println("Nuevo Fee "+owner.getName());
 	
 
 }

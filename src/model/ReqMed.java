@@ -55,12 +55,12 @@ public void setDose(double dose) {
 
 
 
-public  double getpricePerDose() {
+public  double getPricePerDose() {
 return pricePerDose;
 }
 
 
-public void setpricePerDose(double pricePerDose) {
+public void setPricePerDose(double pricePerDose) {
 	this.pricePerDose = pricePerDose;
 }
 

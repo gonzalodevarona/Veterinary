@@ -7,7 +7,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 22 MARCH 2019
+* @LAST UPDATE DATE: 23 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package ui;
@@ -44,13 +44,13 @@ private Veterinary goForIt;
 		goForIt = new Veterinary();	
 		
 		Person gonza = new Person("Gonzalo De Varona", "1006017263", "Infinite Loop", "3127061833");
-		Pet benji = new Pet("Benji", "Cat", 1.0, 15.0, false, false, gonza);
+		Pet benji = new Pet("Benji", "Cat", 1.0, 15.0, gonza);
 		ArrayList<Pet> gonzaPets = new ArrayList<Pet>();
 		gonzaPets.add(benji);
 		goForIt.createPerson(gonza, gonzaPets);
 
 		Person andrea = new Person("Andrea Melendez", "1003274632", "Infinite Loop", "3135625927");
-		Pet rocco = new Pet("Rocco", "Dog", 1.0, 23.0, false, false, andrea);
+		Pet rocco = new Pet("Rocco", "Dog", 1.0, 23.0, andrea);
 		ArrayList<Pet> andreaPets = new ArrayList<Pet>();
 		andreaPets.add(rocco);
 		goForIt.createPerson(andrea, andreaPets);
@@ -58,8 +58,8 @@ private Veterinary goForIt;
 		
 		
 		Person gretel = new Person("Gretel De Varona", "1006078287", "Roosevelt Ave", "5142841922");
-		Pet paul = new Pet("Paul", "Other", 7.0, 70.0, true, true, gretel);
-		Pet daisy = new Pet("Daisy", "Dog", 3.0, 39.0, false, true, gretel);
+		Pet paul = new Pet("Paul", "Other", 7.0, 70.0, gretel);
+		Pet daisy = new Pet("Daisy", "Dog", 3.0, 39.0, gretel);
 		ArrayList<Pet> gretelPets = new ArrayList<Pet>();
 		gretelPets.add(paul); gretelPets.add(daisy);
 		goForIt.createPerson(gretel, gretelPets);
@@ -67,8 +67,8 @@ private Veterinary goForIt;
 		
 		
 		Person pablolondra = new Person("Pablo Londra", "1001237483", "Little Puerto Rico", "3128934055");
-		Pet arnold = new Pet("Arnold", "Cat", 2.0, 20.0, false, true, pablolondra);
-		Pet francis = new Pet("Francis", "Bird", 4.0, 3.2, true, true, pablolondra);
+		Pet arnold = new Pet("Arnold", "Cat", 2.0, 20.0, pablolondra);
+		Pet francis = new Pet("Francis", "Bird", 4.0, 3.2, pablolondra);
 		ArrayList<Pet> pablolondraPets = new ArrayList<Pet>();
 		pablolondraPets.add(arnold); pablolondraPets.add(francis);
 		goForIt.createPerson(pablolondra, pablolondraPets);
@@ -293,7 +293,7 @@ private Veterinary goForIt;
 					--i;
 
 
-					} else{ Pet theNewPet = new Pet(petsName, species, age, weight, false, false, theNew);
+					} else{ Pet theNewPet = new Pet(petsName, species, age, weight, theNew);
 							clientsPets.add(theNewPet);
 					}
 
