@@ -220,27 +220,25 @@ public class Veterinary{
 
 	public void startHospitalizeVet(String name, String id, String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 		boolean theStop = false;
-		int i = 0;
 
-		while(i < client.size() && !theStop){
+		for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
 			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
 				
 				theStop = true;
 				client.get(i).startHospitalizePers(petsName, newMedRec, petsMeds);
-				
-
 			}
-			++i;
 		}
-
-		Pet relationship = client.get(i).givePet(petsName);
 		
+
+		Pet relationship = retrievePet( name, id, petsName);
 
 		boolean theStop2 = false;
 		for (int in = 0; in < MiniRoom.ALLROOMS && !theStop2 ; in++ ) {
 
 			if (room[in].getAvailable()){
 
+				theStop2 = true;
 				room[in].setOwner(name);
 				room[in].setPet(petsName);
 				room[in].setHostage(relationship);
@@ -250,27 +248,26 @@ public class Veterinary{
 
 		}
 
-		
-
-
+	
 	}
 
 
 
 	public Pet retrievePet(String name, String  id, String  petsName){
-		
 		boolean theStop = false;
-		int i = 0;
+		
+		Pet relationshipOfPet = null;
 
-		while(i < client.size() && !theStop){
+		for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
 			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
 				
 				theStop = true;
-			}
-			++i;
-		}
+				relationshipOfPet = client.get(i).givePet(petsName);
+				
 
-		Pet relationshipOfPet = client.get(i).givePet(petsName);
+			}
+		}
 
 		return relationshipOfPet;
 
@@ -290,6 +287,41 @@ public class Veterinary{
 	}
 
 
+
+		public String medRecsFromHPet(){
+			String reply = "";
+		for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
+
+			if(room[i].getAvailable() && room[i].getHostage() == null){ }
+				else{
+					reply += room[i].getHostage().showAllRecords();
+				}
+
+		}
+
+		return reply;
+		}	
+
+
+		public int retrieveNumberMiniRoom(String petsName){
+		int theNumber = 0;
+		boolean theStop = false;
+
+		for(int i = 0 ; i < MiniRoom.ALLROOMS && !theStop ; i++){
+
+			if(room[i].getPet().equalsIgnoreCase(petsName) ){ 
+				theNumber = room[i].getNumberOfMiniRoom();
+				theStop = true;
+				 }
+				
+
+		}
+
+		return theNumber;
+
+
+
+		}
 
 
 

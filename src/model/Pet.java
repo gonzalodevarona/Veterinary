@@ -30,11 +30,13 @@ private double age;
 private double weight;
 private boolean hospitalizedBefore;
 private boolean hospitalizedNow;
-private ArrayList<MedRecord> record;
-private Person owner;
+
 
 
 //RELATIONSHIPS
+
+private ArrayList<MedRecord> record;
+private Person owner;
 
 
 
@@ -135,9 +137,12 @@ public void addMedRec(MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 
 	newMedRec.setPetInfo(showPetsinfo());
 	newMedRec.setOwnerInfo(owner.contactInfo());
+	newMedRec.addMeds(petsMeds);
+	newMedRec.calculatingFee();
 	record.add(newMedRec);
 
-	record.get(record.size()-1).addMeds(petsMeds);
+	System.out.println("Nuevo Fee "+owner.getName());
+	
 
 }
 
@@ -147,6 +152,17 @@ public double gatherCosts(){
 		full += record.get(i).getFee();
 	}
 	return full;
+}
+
+
+public String showAllRecords(){
+	String reply = "";
+	for (int i = 0; i < record.size(); i++ ) {
+		reply += record.get(i).medRecordInfo();
+	}
+
+
+	return reply;
 }
 
 

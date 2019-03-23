@@ -158,7 +158,7 @@ public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayLis
 
 			found = true;
 
-			animal.get(i).addMedRec( newMedRec, petsMeds);
+			animal.get(i).addMedRec(newMedRec, petsMeds);
 
 		}
 

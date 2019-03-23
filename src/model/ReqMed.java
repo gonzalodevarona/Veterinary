@@ -83,6 +83,23 @@ public double priceMed(){
 }
 
 
+public String showMedsinfo(){
+
+	String reply = "";
+
+	
+	reply += "| Prescribed medication's name is: "+name+"\n";
+	reply += "| Prescribed medication's dose is: "+dose+"\n";
+	reply += "| Prescribed medication's price per dose is: "+pricePerDose+"\n";
+	reply += "| Prescribed medication's frecuency is: "+frecuency+"\n";
+	reply += "| \n";
+
+	
+
+	return reply;
+
+}
+
 
 
 

@@ -189,9 +189,10 @@ private Veterinary goForIt;
 
 				//SHOW MEDICAL RECORDS FROM HOSPITALIZED PETS
 				case 5: 
+					showMedRecsFromHPet();
 					break; 
 
-				//EDIT A MEDICAL RECORD FROM A PET.
+				//EDIT A MEDICAL RECORD FROM A PET
 				case 6:
 					break;
 
@@ -204,7 +205,7 @@ private Veterinary goForIt;
 					break;
 
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
-				case 9: 
+				case 9: showMiniRoomNumberByPetsName();
 					break;
 
 				//SHOW RECORDS FROM A PET
@@ -410,9 +411,10 @@ private Veterinary goForIt;
 					System.out.print("Please type the pet's diagnosys, if you do not know it just press ENTER and add it later: "); String diagnosys = reader.nextLine();
 					System.out.println("");
 
-					Pet sickPet = goForIt.retrievePet(name, id, petsName);
+					Pet sick = goForIt.retrievePet(name, id, petsName);
+					
 
-					MedRecord newMedRec = new MedRecord("", "", symptoms, diagnosys, "Open", newDateIn, sickPet);
+					MedRecord newMedRec = new MedRecord("", "", symptoms, diagnosys, "Open", newDateIn, sick);
 
 					System.out.println("******************");
 					System.out.println("*** MEDICATION ***");
@@ -434,7 +436,7 @@ private Veterinary goForIt;
 
 						ReqMed newMed = new ReqMed(medsName, medsDose, medsPrice, medsFrecuency);
 
-						if(!(medsName.equals("")) && medsDose != 0 && medsPrice != 0 && !(medsFrecuency.equals(""))){
+						if(!(medsName.equals("")) && medsDose != 0 && !(medsFrecuency.equals(""))){
 							petsMeds.add(newMed);
 						}
 
@@ -447,12 +449,18 @@ private Veterinary goForIt;
 					System.out.println("");
 				
 
-				} else {System.out.println("ERROR: Invalid date.");}
+				} else {System.out.println("");
+						System.out.println("ERROR: Invalid date.");
+						System.out.println("");}
 
-			} else {System.out.println("ERROR: No match found.");}
+			} else {System.out.println("");
+					System.out.println("ERROR: No match found.");
+					System.out.println("");}
 
 
-		} else {System.out.println("ERROR: All rooms are occupied.");}
+		} else {System.out.println("");
+				System.out.println("ERROR: All rooms are occupied.");
+				System.out.println("");}
 
 	}
 
@@ -464,6 +472,20 @@ private Veterinary goForIt;
 		System.out.println("");
 
 	}
+
+	public void showMedRecsFromHPet(){
+		System.out.println(goForIt.medRecsFromHPet());
+
+	}
+
+
+	public void showMiniRoomNumberByPetsName(){
+		System.out.println("");
+		System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
+		System.out.println("The number of the mini room occupied by " +petsName+ " is " +goForIt.retrieveNumberMiniRoom(petsName));
+	}
+
+
 
 
 						
