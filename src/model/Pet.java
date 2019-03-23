@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 22 MARCH 2019
+* @LAST UPDATE DATE: 23 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -137,6 +137,25 @@ public String showAllRecords(){
 
 
 	return reply;
+}
+
+public void cutItOff(){
+	MedRecord aboutToEnd = record.get(record.size() - 1);
+
+	Calendar today = new GregorianCalendar();
+			int monthT = today.get(Calendar.MONTH) + 1;
+			int dayT = today.get(Calendar.DATE);
+			int yearT = today.get(Calendar.YEAR);
+
+			DateIn todaysDate = new DateIn (dayT, monthT, yearT);
+
+	aboutToEnd.setStatus(MedRecord.CLOSED);
+	aboutToEnd.setDateOut(todaysDate);
+
+	
+
+
+
 }
 
 

@@ -346,6 +346,40 @@ public class Veterinary{
 	}
 
 
+	public void removePet(String name, String  id, String  petsName) {
+		boolean theStop = false;
+
+		for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
+			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
+				
+				theStop = true;
+				client.get(i).givePet(petsName).cutItOff();
+
+				boolean wait = false;
+
+				for(int in = 0 ; in < MiniRoom.ALLROOMS && !wait ; in++){
+
+					if(room[in].getPet().equalsIgnoreCase(petsName) ){ 
+						room[in].setAvailable(true);
+						room[in].setPet("");
+						room[in].setOwner("");
+						room[in].setHostage(null);
+
+						wait = true;
+						 }
+						
+
+				}
+				
+
+			}
+		}
+
+
+	}
+
+
 
 
 

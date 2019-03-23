@@ -197,19 +197,23 @@ private Veterinary goForIt;
 					break;
 
 				//DISCHARGE A PET
-				case 7:
+				case 7: 
+					dischargeAPet();
 					break;
 
 				//SHOW INCOME FOR HOSPITALIZATIONS
-				case 8: showIncome();
+				case 8: 
+					showIncome();
 					break;
 
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
-				case 9: showMiniRoomNumberByPetsName();
+				case 9: 
+					showMiniRoomNumberByPetsName();
 					break;
 
 				//SHOW RECORDS FROM A PET
-				case 10: showAllMedRecs4Pet();
+				case 10: 
+					showAllMedRecs4Pet();
 					break;
 
 
@@ -506,6 +510,27 @@ private Veterinary goForIt;
 
 
 	}
+
+
+
+	public void dischargeAPet() {
+		System.out.println("");
+		System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
+		System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
+		System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
+		System.out.println("");
+
+		if(goForIt.checkOwner(name, id, petsName)){
+			
+			System.out.println(goForIt.showAPetMedRecs(name, id, petsName));
+			goForIt.removePet(name, id, petsName);
+
+		} else{ System.out.println("ERROR: No match found"); }
+
+	}
+
+
+	
 
 
 
