@@ -373,8 +373,8 @@ public double calculatingFee(){
 
 public String medRecordInfo(){
 	String reply = "\n";
-		   reply = "\n";
-	       reply =  "+-----------------------------------------------------------------------------+\n";
+		   reply += "\n";
+	       reply +=  "+-----------------------------------------------------------------------------+\n";
 		   reply += "| ****************************** MEDICAL RECORD ***************************** +\n";
 		   reply += "+-----------------------------------------------------------------------------+\n";
 		   reply += "|\n";
@@ -408,6 +408,13 @@ public String medRecordInfo(){
 
 
 	return reply;
+
+}
+
+public void addNewMed(ReqMed medInMatter){
+
+	med.add(medInMatter);
+
 
 }
 

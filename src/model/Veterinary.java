@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 23 MARCH 2019
+* @LAST UPDATE DATE: 24 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -360,7 +360,7 @@ public class Veterinary{
 
 				for(int in = 0 ; in < MiniRoom.ALLROOMS && !wait ; in++){
 
-					if(room[in].getPet().equalsIgnoreCase(petsName) ){ 
+					if(room[in].getPet().equalsIgnoreCase(petsName) && room[in].getOwner().equalsIgnoreCase(name) ){ 
 						room[in].setAvailable(true);
 						room[in].setPet("");
 						room[in].setOwner("");
@@ -377,6 +377,21 @@ public class Veterinary{
 		}
 
 
+	}
+
+
+
+	public void locatePersonWithPet2AddStuff(String name, String  id, String  petsName, int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed> addedPetsMeds){
+		boolean theStop = false;
+
+		for (int i = 0; i < client.size() && !theStop ; i++ ) {
+
+			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
+				
+				theStop = true;
+				client.get(i).locatePet2AddStuff(petsName, edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
+			}
+		}
 	}
 
 

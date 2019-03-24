@@ -152,9 +152,46 @@ public void cutItOff(){
 	aboutToEnd.setStatus(MedRecord.CLOSED);
 	aboutToEnd.setDateOut(todaysDate);
 
+}
+
+
+public void addStuff2MedRec(int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed> addedPetsMeds){
+	MedRecord recInMatter = record.get(record.size()-1);
+	ReqMed medInMatter = null;
+	switch (edition) {
+		case 1: 
+			String previousS = recInMatter.getSymptoms();
+			previousS += " | "+symptomsEdit;
+			recInMatter.setSymptoms(previousS);
+			break;
+
+		case 2: 
+			String previousD = recInMatter.getDiagnosys();
+			previousD += " | "+diagnosysEdit;
+			recInMatter.setDiagnosys(previousD);
+			break;
+
+		case 3:
+			for (int i = 0 ; i < addedPetsMeds.size() ; i++ ) {
+				medInMatter = addedPetsMeds.get(i);
+				recInMatter.addNewMed(medInMatter);
+				
+				
+
+				
+			}
+			break;
+			
+		
+			
+		
+			
+		
+		
+	}
+
 	
-
-
+	
 
 }
 

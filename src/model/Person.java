@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 22 MARCH 2019
+* @LAST UPDATE DATE: 24 MARCH 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -198,6 +198,28 @@ public double myBill(){
 	}
 
 	return bill;
+}
+
+
+public void locatePet2AddStuff(String petsName, int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed>  addedPetsMeds){
+
+
+	boolean foundIt = false;
+
+	for (int i = 0; i < animal.size() && !foundIt ; i++ ) {
+
+		if ((animal.get(i).getName()).equalsIgnoreCase(petsName)) {
+
+			foundIt = true;
+
+			animal.get(i).addStuff2MedRec(edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
+
+		}
+
+	}
+
+
+
 }
 
 
