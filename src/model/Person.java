@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 24 MARCH 2019
+* @LAST UPDATE DATE: 15 APRIL 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -149,23 +149,11 @@ public boolean reviewPet(String theName){
 
 public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 
+	Pet pet = givePet(petsName);
 
-	boolean found = false;
-
-	for (int i = 0; i < animal.size() && !found ; i++ ) {
-
-		if ((animal.get(i).getName()).equalsIgnoreCase(petsName)) {
-
-			found = true;
-
-			animal.get(i).addMedRec(newMedRec, petsMeds);
-
-		}
-
+	if(pet != null){
+		pet.addMedRec(newMedRec, petsMeds);
 	}
-
-
-
 }
 
 
@@ -200,6 +188,14 @@ public double myBill(){
 	return bill;
 }
 
+public int countHospitalizations(){
+	int counter = 0;
+
+	for (int i = 0; i < animal.size(); i++ ) {
+		counter += animal.get(i).countMyHospitalizations();
+	}
+	return counter;	
+}
 
 public void locatePet2AddStuff(String petsName, int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed>  addedPetsMeds){
 

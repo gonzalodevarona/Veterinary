@@ -162,8 +162,6 @@ public void setFee(double fee) {
 
 public void addMeds(ArrayList<ReqMed> petsMeds){
 	med = petsMeds;
-
-
 }
 
 

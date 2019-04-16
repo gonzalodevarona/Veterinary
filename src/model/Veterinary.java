@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 15 APRIL 2019
+* @LAST UPDATE DATE: 16 APRIL 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -78,7 +78,7 @@ public class Veterinary{
 		
 		client.add(theNew);
 
-		client.get((client.size()) - 1).createPet(clientsPets);
+		theNew.createPet(clientsPets);
 
 	}
 
@@ -101,32 +101,40 @@ public class Veterinary{
 		String reply = "*******************************************************\n";
 			   reply += "* ERROR: There is not a client with that name and ID. *\n";
 		 	   reply += "*******************************************************";
+
+		Person person = findPerson(clients, clientsId);
+
+		if(person != null){
+			reply = person.showMyinfo();
+		}
+		return reply;		
+	}
+
+
+
+	public Person findPerson(String clients, String clientsId){
+		Person thePerson = null;
+
 		boolean theStop = false;
 
 		for (int i = 0; i < client.size() && !theStop ; i++ ) {
 
 			if ((client.get(i).getName()).equalsIgnoreCase(clients) && (client.get(i).getId()).equalsIgnoreCase(clientsId)){
-
-				reply = client.get(i).showMyinfo();
+				thePerson = client.get(i);
 				theStop = true;
-
 			}
-	
 		}
-
-
-	return reply;		
+			return thePerson;
 	}
-
 
 
 	public String showContactInfo(int kind, String theName, String personId) {
 		String message = "";
 
 		switch (kind) {
-
-			
-			case 1: boolean hold = false;
+		
+			case 1: 
+			boolean hold = false;
 			for (int i = 0 ; i < MiniRoom.ALLROOMS && !hold ; i++) {
 
 				String itsHospitalized = room[i].checkIfItsHospitalized(kind, theName);
@@ -134,30 +142,20 @@ public class Veterinary{
 				if(itsHospitalized.equalsIgnoreCase("")){ 
 					 hold = true;
 
-					 boolean wait = false;
-
-					for (int in = 0; in < client.size() && !wait ; in++ ) {
-
-						if ((client.get(in).getName()).equalsIgnoreCase(theName) && (client.get(in).getId()).equalsIgnoreCase(personId)){
-
-							message = client.get(in).contactInfo();
-
-							wait = true;
-							
-
+					Person person = findPerson(theName, personId);
+						if (person != null){
+							message = person.contactInfo();
 						}
 
 					}
-
-				}
-					else {message = itsHospitalized;}
-				
+				else {message = itsHospitalized;}
 			}
 			
 			break;
 
-			case 2: boolean holdOn = false;
-			 for (int ind = 0 ; ind < MiniRoom.ALLROOMS && !holdOn ; ind++) {
+			case 2:
+			boolean holdOn = false;
+			for (int ind = 0 ; ind < MiniRoom.ALLROOMS && !holdOn ; ind++) {
 
 				String itsHospitalized2 = room[ind].checkIfItsHospitalized(kind, theName);
 
@@ -167,38 +165,26 @@ public class Veterinary{
 					String ownersName = room[ind].getOwner();
 
 					boolean theStop2 = false;
+					Person personInMatter = null;
 					for (int inde = 0; inde < client.size() && !theStop2 ; inde++ ) {
+						personInMatter = client.get(inde);
 
-						if ((client.get(inde).getName()).equals(ownersName) && client.get(inde).reviewPet(theName)){
+						if ((personInMatter.getName()).equalsIgnoreCase(ownersName) && personInMatter.reviewPet(theName)){
 
-							message = client.get(inde).contactInfo();
+							message = personInMatter.contactInfo();
 							theStop2 = true;
 
 						}
-	
 					}
-
-
-
-
-
-
-
 				}
-					else {message = itsHospitalized2;}
-				
+				else {message = itsHospitalized2;}				
 			}
 
 			break;
 
 			default:
-			break;
-				
-			
-				
-			
-			
-		}
+			break;		
+		} //switch end
 
 		return message;
 	}
@@ -218,63 +204,42 @@ public class Veterinary{
 	}
 
 
-	public void startHospitalizeVet(String name, String id, String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
-		boolean theStop = false;
-
-		for (int i = 0; i < client.size() && !theStop ; i++ ) {
-
-			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
-				
-				theStop = true;
-				client.get(i).startHospitalizePers(petsName, newMedRec, petsMeds);
+	public void startHospitalizeVet(String name, String id, String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds, Pet sick){
+		Person person = findPerson(name, id);
+			if (person != null){
+				person.startHospitalizePers(petsName, newMedRec, petsMeds);
 			}
-		}
-		
 
-		Pet relationship = retrievePet( name, id, petsName);
-
-		boolean theStop2 = false;
-		for (int in = 0; in < MiniRoom.ALLROOMS && !theStop2 ; in++ ) {
+		boolean theStop = false;
+		for (int in = 0; in < MiniRoom.ALLROOMS && !theStop ; in++ ) {
 
 			if (room[in].getAvailable()){
 
-				theStop2 = true;
+				theStop = true;
 				room[in].setOwner(name);
 				room[in].setPet(petsName);
-				room[in].setHostage(relationship);
+				room[in].setHostage(sick);
 				room[in].setAvailable(false);
 
 			}
-
 		}
-
-	
 	}
 
 
 
 	public Pet retrievePet(String name, String  id, String  petsName){
-		boolean theStop = false;
-		
 		Pet relationshipOfPet = null;
 
-		for (int i = 0; i < client.size() && !theStop ; i++ ) {
-
-			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
-				
-				theStop = true;
-				relationshipOfPet = client.get(i).givePet(petsName);
-				
-
+		Person person = findPerson(name, id);
+			if (person != null){
+				relationshipOfPet = person.givePet(petsName);
 			}
-		}
 
 		return relationshipOfPet;
-
 	}
 
 
-	public double gatherAllFees(){
+	public double gatherAllHospitalizationFees(){
 		double income = 0.0;
 
 	for (int i = 0; i < client.size(); i++ ) {
@@ -287,15 +252,51 @@ public class Veterinary{
 	}
 
 
+	public double totalIncome(){
+		double incomeT = 0.0;
+
+		incomeT += gatherAllHospitalizationFees();
+
+		return incomeT;
+
+	}
+
+
+	public double hospitalizationAverage(){
+		double hAverage = 0.0;
+
+	for (int i = 0; i < client.size(); i++ ) {
+
+		hAverage += client.get(i).myBill();
+	}
+
+	hAverage = hAverage / countAllHospitalizations();
+
+	return hAverage;
+
+	}
+
+	public int countAllHospitalizations(){
+		int many = 0;
+
+		for (int i = 0; i < client.size(); i++ ) {
+
+			many += client.get(i).countHospitalizations();
+		}
+
+		return  many;
+	}
+
+
 
 		public String medRecsFromHPet(){
 			String reply = "";
 		for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
 
 			if(room[i].getAvailable() && room[i].getHostage() == null){ }
-				else{
-					reply += room[i].getHostage().showAllRecords();
-				}
+			else{
+				reply += room[i].getHostage().showAllRecords();
+			}
 
 		}
 
@@ -312,8 +313,7 @@ public class Veterinary{
 			if(room[i].getPet().equalsIgnoreCase(petsName) ){ 
 				theNumber = room[i].getNumberOfMiniRoom();
 				theStop = true;
-				 }
-				
+				 }	
 
 		}
 
@@ -326,20 +326,13 @@ public class Veterinary{
 
 		public String showAPetMedRecs(String name, String  id, String  petsName){
 		boolean theStop = false;
-		String reply = "";
+		String reply = "ERROR: No match found";
 		
 		
-
-		for (int i = 0; i < client.size() && !theStop ; i++ ) {
-
-			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
-				
-				theStop = true;
-				reply += client.get(i).givePet(petsName).showAllRecords();
-				
-
-			}
-		}
+		Person person = findPerson(name, id);
+		if (person != null){
+			reply = person.givePet(petsName).showAllRecords();
+		} 
 
 		return reply;
 
@@ -347,16 +340,11 @@ public class Veterinary{
 
 
 	public void removePet(String name, String  id, String  petsName) {
-		boolean theStop = false;
+		Person person = findPerson(name, id);
+		if (person != null){
+			person.givePet(petsName).cutItOff();
 
-		for (int i = 0; i < client.size() && !theStop ; i++ ) {
-
-			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
-				
-				theStop = true;
-				client.get(i).givePet(petsName).cutItOff();
-
-				boolean wait = false;
+			boolean wait = false;
 
 				for(int in = 0 ; in < MiniRoom.ALLROOMS && !wait ; in++){
 
@@ -367,17 +355,13 @@ public class Veterinary{
 						room[in].setHostage(null);
 
 						wait = true;
-						 }
+					}
 						
 
 				}
-				
-
-			}
-		}
-
-
+		} 	
 	}
+	
 
 
 

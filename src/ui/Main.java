@@ -7,7 +7,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 15 APRIL 2019
+* @LAST UPDATE DATE: 16 APRIL 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package ui;
@@ -83,7 +83,7 @@ private Veterinary goForIt;
 		ArrayList<ReqMed> petsMedsDaisy = new ArrayList<ReqMed>();
 		ReqMed noxpirin = new ReqMed("Noxpirin", 24, 2000, "every 7 hours");
 		petsMedsDaisy.add(noxpirin);
-		goForIt.startHospitalizeVet("Gretel De Varona", "1006078287", "Daisy", daisyMedRec, petsMedsDaisy);
+		goForIt.startHospitalizeVet("Gretel De Varona", "1006078287", "Daisy", daisyMedRec, petsMedsDaisy, daisy);
 
 		DateIn paulDate = new DateIn (21, 1, 2019);
 		MedRecord paulMedRec = new MedRecord("", "", "Low blood pressure ", "Pacient seems to have a diabetes", "Open", paulDate , paul);
@@ -93,7 +93,7 @@ private Veterinary goForIt;
 		petsMedsPaul.add(metformin);
 		petsMedsPaul.add(chocolate);
 
-		goForIt.startHospitalizeVet("Gretel De Varona", "1006078287", "Paul", paulMedRec, petsMedsPaul);
+		goForIt.startHospitalizeVet("Gretel De Varona", "1006078287", "Paul", paulMedRec, petsMedsPaul, paul);
 
 
 
@@ -109,7 +109,7 @@ private Veterinary goForIt;
 		ArrayList<ReqMed> petsMedsArnold = new ArrayList<ReqMed>();
 		ReqMed acetaminophen = new ReqMed("Acetaminophen", 24, 2000, "every 7 hours");
 		petsMedsArnold.add(acetaminophen);
-		goForIt.startHospitalizeVet("Pablo Londra", "1001237483", "Arnold", arnoldMedRec, petsMedsArnold);
+		goForIt.startHospitalizeVet("Pablo Londra", "1001237483", "Arnold", arnoldMedRec, petsMedsArnold, arnold);
 
 
 		DateIn francisDate = new DateIn (12, 2, 2019);
@@ -118,7 +118,7 @@ private Veterinary goForIt;
 		ReqMed dolex = new ReqMed("Dolex", 12, 3000, "every 3 hours");
 		petsMeds.add(dolex);
 
-		goForIt.startHospitalizeVet("Pablo Londra", "1001237483", "Francis", aMedRec, petsMeds);
+		goForIt.startHospitalizeVet("Pablo Londra", "1001237483", "Francis", aMedRec, petsMeds, francis);
 
 		
 
@@ -150,10 +150,11 @@ private Veterinary goForIt;
 		System.out.println("5. Show medical records from hospitalized pets.");
 		System.out.println("6. Edit a medical record from a pet.");
 		System.out.println("7. Discharge a pet.");
-		System.out.println("8. Show income for hospitalizations.");
-		System.out.println("9. Show occupied mini room based on pet's full name.");
-		System.out.println("10.Show records from a pet.");
-		System.out.println("11.QUIT PROGRAM");
+		System.out.println("8. Show income.");
+		System.out.println("9. Show average income per service.");
+		System.out.println("10.Show occupied mini room based on pet's full name.");
+		System.out.println("11.Show records from a pet.");
+		System.out.println("12.QUIT PROGRAM");
 		System.out.println("");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -191,7 +192,7 @@ private Veterinary goForIt;
 		System.out.println("                                                                   	      	                           d8888P ");                                                      
                                                                                           
 
-		while (userInput != 11){
+		while (userInput != 12){
 
 			showMenuOptions();
 
@@ -245,19 +246,24 @@ private Veterinary goForIt;
 					showIncome();
 					break;
 
-				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
+				//SHOW INCOME FOR HOSPITALIZATIONS
 				case 9: 
+					showAverageIncome();
+					break;
+
+				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
+				case 10: 
 					showMiniRoomNumberByPetsName();
 					break;
 
 				//SHOW RECORDS FROM A PET
-				case 10: 
+				case 11: 
 					showAllMedRecs4Pet();
 					break;
 
 
 				//QUIT PROGRAM
-				case 11: 
+				case 12: 
 					theGoodbye();
 					break;
 
@@ -487,7 +493,7 @@ private Veterinary goForIt;
 
 					}
 
-					goForIt.startHospitalizeVet(name, id, petsName, newMedRec, petsMeds);
+					goForIt.startHospitalizeVet(name, id, petsName, newMedRec, petsMeds, sick);
 
 					System.out.println("");
 					System.out.println(petsName+" was successfully hospitalized!");
@@ -513,8 +519,21 @@ private Veterinary goForIt;
 	public void showIncome(){
 
 		System.out.println("");
-		System.out.println("This is the income for every hospitalization: "+goForIt.gatherAllFees()+" COP");
+		System.out.println("TOTAL INCOME: "+goForIt.totalIncome()+" COP");
 		System.out.println("");
+		System.out.println("INCOME BY SERVICE ");
+		System.out.println("Income for hospitalizations: "+goForIt.gatherAllHospitalizationFees()+" COP");
+		System.out.println("");
+
+	}
+
+
+	public void showAverageIncome(){
+
+		System.out.println("");
+		System.out.println("AVERAGE INCOME BY SERVICE");
+		System.out.println("");
+		System.out.println("Hospitalizations: "+goForIt.hospitalizationAverage()+" COP");
 
 	}
 
@@ -572,6 +591,8 @@ private Veterinary goForIt;
 			
 			System.out.println(goForIt.showAPetMedRecs(name, id, petsName));
 			goForIt.removePet(name, id, petsName);
+			System.out.println("");
+			System.out.println(petsName+" has been successfully discharged!");
 			} else{ System.out.println("This pet does not have any medical record."); }
 
 		} else{ System.out.println("ERROR: No match found"); }
