@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 23 MARCH 2019
+* @LAST UPDATE DATE: 15 APRIL 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 
@@ -28,6 +28,9 @@ private String name;
 private String type;
 private double age;
 private double weight;
+private double height;
+private double bmi;
+
 
 
 
@@ -41,11 +44,14 @@ private Person owner;
 
 //METHODS
 
-public Pet(String name, String type, double age, double weight, Person owner){
+public Pet(String name, String type, double age, double weight, double height, Person owner){
 	this.name = name;
 	this.type = type;
 	this.age = age;
 	this.weight = weight;
+	this.height = height;
+	bmi = calculateBmi();
+
 
 	this.owner = owner;
 	record = new ArrayList<MedRecord>();
@@ -93,6 +99,19 @@ public void setWeight(double weight) {
 }
 
 
+public  double getHeight() {
+return height;
+}
+
+public void setHeight(double height) {
+	this.height = height;
+}
+
+public  double calculateBmi(){
+	return (weight / (height * height));
+}
+
+
 public String showPetsinfo(){
 	String reply = "";
 
@@ -101,6 +120,8 @@ public String showPetsinfo(){
 	reply += "| Pet's species is: "+type+"\n";
 	reply += "| Pet's age is: "+age+" year(s) old\n";
 	reply += "| Pet's weight is: "+weight+" Kg\n";
+	reply += "| Pet's height is: "+height+" m\n";
+	reply += "| Pet's BMI is: "+bmi+" \n";
 	reply += "| \n";
 	
 
