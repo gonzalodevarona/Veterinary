@@ -154,7 +154,8 @@ private Veterinary goForIt;
 		System.out.println("9. Show average income per service.");
 		System.out.println("10.Show occupied mini room based on pet's full name.");
 		System.out.println("11.Show records from a pet.");
-		System.out.println("12.QUIT PROGRAM");
+		System.out.println("12.Edit address or phone number from a client");
+		System.out.println("13.QUIT PROGRAM");
 		System.out.println("");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -192,7 +193,7 @@ private Veterinary goForIt;
 		System.out.println("                                                                   	      	                           d8888P ");                                                      
                                                                                           
 
-		while (userInput != 12){
+		while (userInput != 13){
 
 			showMenuOptions();
 
@@ -246,7 +247,7 @@ private Veterinary goForIt;
 					showIncome();
 					break;
 
-				//SHOW INCOME FOR HOSPITALIZATIONS
+				//SHOW AVERAGE INCOME 
 				case 9: 
 					showAverageIncome();
 					break;
@@ -264,6 +265,11 @@ private Veterinary goForIt;
 
 				//QUIT PROGRAM
 				case 12: 
+					changeClientsInfo();
+					break;
+
+				//QUIT PROGRAM
+				case 13: 
 					theGoodbye();
 					break;
 
@@ -615,20 +621,22 @@ private Veterinary goForIt;
 			System.out.println("Please select what you would like to add:");
 			System.out.println("1. Symptoms.");
 			System.out.println("2. Diagnosys.");
-			System.out.println("3. Prescribed medications.");
+			System.out.println("3. Prescribed medication.");
 			typeSelectionMssg();
 			int edition = reader.nextInt(); reader.nextLine();
 			plainLine();
 
 			String symptomsEdit = "";
 			String diagnosysEdit = "";
-			ArrayList<ReqMed> addedPetsMeds = new ArrayList<ReqMed>();
-			
+			String medsName = "";
+			double medsDose = 0.0;
+			double medsPrice = 0.0;
+			String medsFrecuency = "";			
 			
 			switch (edition) {
 				case 1: 	
 					System.out.print("Please type the pet's symptoms: "); symptomsEdit = reader.nextLine();
-					goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
+					goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, medsName, medsDose, medsPrice, medsFrecuency);
 					System.out.println("");
 					System.out.println("Current medical record from "+petsName+" has been edited");
 					System.out.println("");
@@ -636,40 +644,27 @@ private Veterinary goForIt;
 
 				case 2: 
 					System.out.print("Please type the pet's diagnosys: "); diagnosysEdit = reader.nextLine();
-					goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
+					goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, medsName, medsDose, medsPrice, medsFrecuency);
 					System.out.println("");
 					System.out.println("Current medical record from "+petsName+" has been edited");
 					System.out.println("");
 					break;
 
 				case 3:
-					System.out.print("How many prescribed medicines does the pet have?\n"); int quantityMeds = reader.nextInt(); reader.nextLine();
 
+					System.out.println("");
+					System.out.print("Please type the medicine's name: ");  medsName = reader.nextLine();
+					System.out.print("Please type the medicine's dose: ");  medsDose = reader.nextDouble(); reader.nextLine();
+					System.out.print("Please type the medicine's price per dose: ");  medsPrice = reader.nextDouble(); reader.nextLine();
+					System.out.print("Please type the medicine's frecuency: ");  medsFrecuency = reader.nextLine();
 
-					
-
-					for(int i = 0; i < quantityMeds; ++i){
-
+					if(!(medsName.equals("")) && medsDose != 0 ){
 						System.out.println("");
-						System.out.println("___________________________________________________________________");
-						System.out.print("Please type the medicine's name: "); String medsName = reader.nextLine();
-						System.out.print("Please type the medicine's dose: "); double medsDose = reader.nextDouble(); reader.nextLine();
-						System.out.print("Please type the medicine's price per dose: "); double medsPrice = reader.nextDouble(); reader.nextLine();
-						System.out.print("Please type the medicine's frecuency: "); String medsFrecuency = reader.nextLine();
-
-						if(!(medsName.equals("")) && medsDose != 0 && !(medsFrecuency.equals(""))){
-							ReqMed newMedAdded = new ReqMed(medsName, medsDose, medsPrice, medsFrecuency);
-							addedPetsMeds.add(newMedAdded);
-							System.out.println("");
-							System.out.println("Current medical record from "+petsName+" has been edited");
-							System.out.println("");
-							
-						} else{ System.out.println("ERROR: Prescribed medication could not be added, fields are incomplete"); }
-
-					}
-					if(addedPetsMeds.get(0) != null){
-						goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
-					}
+						System.out.println(goForIt.locatePersonWithPet2AddStuff(name, id, petsName, edition, symptomsEdit, diagnosysEdit, medsName, medsDose, medsPrice, medsFrecuency));
+						System.out.println("");
+						
+					} else{ System.out.println("ERROR: Prescribed medication could not be added, fields are incomplete"); }
+					
 					break;
 				
 				default: 
@@ -677,20 +672,47 @@ private Veterinary goForIt;
 					System.out.println("ERROR: Invalid selection.");
 					System.out.println("");
 					break;
-					
-				
-					
-				
-					
-				
-				
 				}
 			} else{ System.out.println("ERROR: Pet does not have an open medical record"); }
 
-		} else{ System.out.println("ERROR: No match found"); }
+		} else { System.out.println("ERROR: No match found"); }
 
 	}
 
+
+	public void changeClientsInfo(){
+		System.out.println("");
+		System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
+		System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
+		System.out.println("");
+		System.out.println("Please select what you would like to edit:");
+		System.out.println("1. Address.");
+		System.out.println("2. Phone.");
+		typeSelectionMssg();
+		int edition = reader.nextInt(); reader.nextLine();
+		plainLine();
+		String newAddress = "";
+		String newPhone = "";
+
+		switch (edition) {
+			case 1: 
+				System.out.print("Please type the new address: ");  newAddress = reader.nextLine();
+				System.out.println("");
+				System.out.println(goForIt.changeClientInfo(name, id, newAddress, newPhone));
+				break;
+			case 2:	
+				System.out.print("Please type the new phone number: ");  newPhone = reader.nextLine();
+				System.out.println("");
+				System.out.println(goForIt.changeClientInfo(name, id, newAddress, newPhone));
+				break;
+			default:
+				System.out.println("");
+				System.out.println("ERROR: Invalid selection.");
+				System.out.println("");
+				break;	
+		}
+
+	}
 	
 
 

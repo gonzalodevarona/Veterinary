@@ -14,209 +14,224 @@ import java.util.*;
 public class Person{
 
 
-//ATTRIBUTES
-private String name;
-private String id;
-private String address;
-private String phone;
+	//ATTRIBUTES
+	private String name;
+	private String id;
+	private String address;
+	private String phone;
 
 
-//RELATIONSHIPS
-private ArrayList<Pet> animal;
-
-
-
-//METHODS
-
-public Person(String name, String id, String address, String phone){
-	this.name = name;
-	this.id = id;
-	this.address = address;
-	this.phone = phone;
-	animal = new ArrayList<Pet>(); 
-}
-
-
-public  String getName() {
-return name;
-}
-
-
-public void setName(String name) {
-	this.name = name;
-}
-
-
-public  String getId() {
-return id;
-}
-
-
-public void setId(String id) {
-	this.id = id;
-}
+	//RELATIONSHIPS
+	private ArrayList<Pet> animal;
 
 
 
-public  String getAddress() {
-return address;
-}
+	//METHODS
 
-
-public void setAddress(String address) {
-	this.address = address;
-}
-
-
-
-public  String getPhone() {
-return phone;
-}
-
-public void setPhone(String phone) {
-	this.phone = phone;
-}
-
-
-public void createPet(ArrayList<Pet> clientsPets){
-
-	animal = clientsPets;
-
-}
-
-
-
-public String showMyinfo(){
-	String reply = "";
-
-	reply += "+--------------------------------------------------------------+\n";
-	reply += "| The client's name is: "+name+"\n";
-	reply += "| The client's id is: "+id+"\n";
-	reply += "| The client's address is: "+address+"\n";
-	reply += "| The client's phone number is: "+phone+"\n";
-	reply += "+--------------------------------------------------------------+\n";
-	reply += "| \n";
-	reply += "| The client's pets are:\n";
-	reply += "| \n";
-
-	int number = 0;
-	for (int i = 0; i < animal.size() ; i++ ) {
-		++number;
-	reply += "| Pet #"+number+"\n";
-	reply += animal.get(i).showPetsinfo();			
+	public Person(String name, String id, String address, String phone){
+		this.name = name;
+		this.id = id;
+		this.address = address;
+		this.phone = phone;
+		animal = new ArrayList<Pet>(); 
 	}
 
-	reply += "+--------------------------------------------------------------+\n";
 
-	return reply;
-
-}
-
+	public  String getName() {
+	return name;
+	}
 
 
-public String contactInfo(){
-	String reply = "";
-
-	reply += "+--------------------------------------------------------------+\n";
-	reply += "| The owner's name is: "+name+"\n";
-	reply += "| The owner's id is: "+id+"\n";
-	reply += "| The owner's address is: "+address+"\n";
-	reply += "| The owner's phone number is: "+phone+"\n";
-	reply += "+--------------------------------------------------------------+\n";
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
-	return reply;
-}
+	public  String getId() {
+	return id;
+	}
 
 
-public boolean reviewPet(String theName){
+	public void setId(String id) {
+		this.id = id;
+	}
 
-	boolean hasIt = false;
 
-	for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
 
-		if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
+	public  String getAddress() {
+	return address;
+	}
 
-			hasIt = true;
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public  String getPhone() {
+	return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	public void createPet(ArrayList<Pet> clientsPets){
+
+		animal = clientsPets;
+
+	}
+
+
+
+	public String showMyinfo(){
+		String reply = "";
+
+		reply += "+--------------------------------------------------------------+\n";
+		reply += "| The client's name is: "+name+"\n";
+		reply += "| The client's id is: "+id+"\n";
+		reply += "| The client's address is: "+address+"\n";
+		reply += "| The client's phone number is: "+phone+"\n";
+		reply += "+--------------------------------------------------------------+\n";
+		reply += "| \n";
+		reply += "| The client's pets are:\n";
+		reply += "| \n";
+
+		int number = 0;
+		for (int i = 0; i < animal.size() ; i++ ) {
+			++number;
+		reply += "| Pet #"+number+"\n";
+		reply += animal.get(i).showPetsinfo();			
 		}
 
-	}
+		reply += "+--------------------------------------------------------------+\n";
 
-	return hasIt;
-}
-
-
-
-public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
-
-	Pet pet = givePet(petsName);
-
-	if(pet != null){
-		pet.addMedRec(newMedRec, petsMeds);
-	}
-}
-
-
-
-public Pet givePet(String theName){
-
-	Pet found = null;
-	boolean hasIt = false;
-
-	for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
-
-		if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
-
-			hasIt = true;
-			found = animal.get(i);
-		}
+		return reply;
 
 	}
 
-	return found;
-}
 
 
-public double myBill(){
-	double bill = 0.0;
+	public String contactInfo(){
+		String reply = "";
 
-	for (int i = 0; i < animal.size(); i++ ) {
+		reply += "+--------------------------------------------------------------+\n";
+		reply += "| The owner's name is: "+name+"\n";
+		reply += "| The owner's id is: "+id+"\n";
+		reply += "| The owner's address is: "+address+"\n";
+		reply += "| The owner's phone number is: "+phone+"\n";
+		reply += "+--------------------------------------------------------------+\n";
 
-		bill += animal.get(i).gatherCosts();
+
+		return reply;
 	}
 
-	return bill;
-}
 
-public int countHospitalizations(){
-	int counter = 0;
+	public boolean reviewPet(String theName){
 
-	for (int i = 0; i < animal.size(); i++ ) {
-		counter += animal.get(i).countMyHospitalizations();
-	}
-	return counter;	
-}
+		boolean hasIt = false;
 
-public void locatePet2AddStuff(String petsName, int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed>  addedPetsMeds){
+		for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
 
+			if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
 
-	boolean foundIt = false;
-
-	for (int i = 0; i < animal.size() && !foundIt ; i++ ) {
-
-		if ((animal.get(i).getName()).equalsIgnoreCase(petsName)) {
-
-			foundIt = true;
-
-			animal.get(i).addStuff2MedRec(edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
+				hasIt = true;
+			}
 
 		}
 
+		return hasIt;
 	}
 
 
 
-}
+	public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
+
+		Pet pet = givePet(petsName);
+
+		if(pet != null){
+			pet.addMedRec(newMedRec, petsMeds);
+		}
+	}
+
+
+
+	public Pet givePet(String theName){
+
+		Pet found = null;
+		boolean hasIt = false;
+
+		for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
+
+			if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
+
+				hasIt = true;
+				found = animal.get(i);
+			}
+
+		}
+
+		return found;
+	}
+
+
+	public double myBill(){
+		double bill = 0.0;
+
+		for (int i = 0; i < animal.size(); i++ ) {
+
+			bill += animal.get(i).gatherCosts();
+		}
+
+		return bill;
+	}
+
+	public int countHospitalizations(){
+		int counter = 0;
+
+		for (int i = 0; i < animal.size(); i++ ) {
+			counter += animal.get(i).countMyHospitalizations();
+		}
+		return counter;	
+	}
+
+	public String locatePet2AddStuff(String petsName, int edition, String symptomsEdit, String diagnosysEdit, String medsName, double medsDose, double medsPrice, String medsFrecuency){
+		String reply = "";
+		Pet pet = givePet(petsName);
+
+		switch (edition) {
+			case 1: pet.addSymptoms(symptomsEdit);
+				break;
+			case 2: pet.addDiagnosys(diagnosysEdit);
+				break;
+			case 3: reply += pet.addMedicine(medsName, medsDose, medsPrice, medsFrecuency);
+				break;
+			
+		}
+
+		return reply;
+	}
+
+
+
+	/**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
+
+	public void modifyAddressOrPhone(String newAddress, String newPhone){
+
+		if(newAddress.equalsIgnoreCase("")){
+			phone = newPhone;
+
+		} else{address = newAddress;}
+	}
+		
 
 
 

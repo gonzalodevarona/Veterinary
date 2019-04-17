@@ -365,18 +365,27 @@ public class Veterinary{
 
 
 
-	public void locatePersonWithPet2AddStuff(String name, String  id, String  petsName, int edition, String symptomsEdit, String diagnosysEdit, ArrayList<ReqMed> addedPetsMeds){
-		boolean theStop = false;
-
-		for (int i = 0; i < client.size() && !theStop ; i++ ) {
-
-			if ((client.get(i).getName()).equalsIgnoreCase(name) && (client.get(i).getId()).equalsIgnoreCase(id)){
-				
-				theStop = true;
-				client.get(i).locatePet2AddStuff(petsName, edition, symptomsEdit, diagnosysEdit, addedPetsMeds);
-			}
+	public String locatePersonWithPet2AddStuff(String name, String  id, String petsName, int edition, String symptomsEdit, String diagnosysEdit, String medsName, double medsDose, double medsPrice, String medsFrecuency){
+		String reply = "";
+		Person person = findPerson(name, id);
+		if (person != null){
+			reply += person.locatePet2AddStuff(petsName, edition, symptomsEdit, diagnosysEdit, medsName, medsDose, medsPrice, medsFrecuency);
 		}
+		return reply;
 	}
+
+
+	public String changeClientInfo(String name, String  id, String newAddress, String newPhone){
+		String reply = "ERROR: No match found";
+		Person person = findPerson(name, id);
+		if (person != null){
+			reply = "Information has been sucessfully updated!";
+			person.modifyAddressOrPhone(newAddress, newPhone);
+		}
+		return reply;
+
+	}
+
 
 
 
