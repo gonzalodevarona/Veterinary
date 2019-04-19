@@ -234,6 +234,38 @@ public class Person{
 		
 
 
+	public double allPetsServicesFees(int serviceSelection){
+		double reply = 0.0;
+		switch (serviceSelection) {
+			case 0:
+				reply += petsFeeServices(1);
+				reply += petsFeeServices(2);
+				reply += petsFeeServices(3);
+				reply += petsFeeServices(4);
+				reply += petsFeeServices(5);
+				break;
+			default:
+				reply = petsFeeServices(serviceSelection);	
+				break;	
+		}
+		return reply;
+	}
+
+
+	public double petsFeeServices(int serviceSelection){
+		double reply = 0.0;
+		for (int i = 0; i<animal.size() ; i++ ) {
+			reply += animal.get(i).servicesFees(serviceSelection);	
+		}
+		return reply;
+	}
+
+	public void startServicePers(Pet clientPet, Service newService){
+		clientPet.addService(newService);
+
+	}
+
+
 
 
 

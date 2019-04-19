@@ -39,7 +39,7 @@ public class Pet{
 
 	private ArrayList<MedRecord> record;
 	private Person owner;
-
+	private ArrayList<Service> services;
 
 
 	//METHODS
@@ -55,6 +55,7 @@ public class Pet{
 
 		this.owner = owner;
 		record = new ArrayList<MedRecord>();
+		services = new ArrayList<Service>();
 	}
 
 
@@ -244,5 +245,55 @@ public class Pet{
 
 		return reply;
 	}
+
+
+	public double servicesFees(int serviceSelection){
+		double reply = 0.0;
+		switch (serviceSelection) {
+			case 0:
+				reply += feeServices(Service.BATH);
+				reply += feeServices(Service.BATHDOM);
+				reply += feeServices(Service.TEETH);
+				reply += feeServices(Service.NAILS);
+				reply += feeServices(Service.SHOT);
+				break;
+			case 1:
+				reply = feeServices(Service.BATH);
+				break;
+			case 2:
+				reply = feeServices(Service.BATHDOM);
+				break;
+			case 3:
+				reply = feeServices(Service.TEETH);
+				break;
+			case 4:
+				reply = feeServices(Service.NAILS);
+				break;
+			case 5:
+				reply = feeServices(Service.SHOT);
+				break;	
+		}
+		return reply;
+	}
+
+
+	public double feeServices(char serviceChar){
+		double reply = 0.0;
+
+		for (int i = 0; i<services.size() ; i++ ) {
+			if(serviceChar == services.get(i).getType()){
+				reply += services.get(i).getPrice();
+			}	
+		}
+		return reply;
+	}
+
+	public void addService(Service newService){
+		services.add(newService);
+	}
+
+
+
+
 
  } //final

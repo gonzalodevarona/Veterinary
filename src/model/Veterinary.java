@@ -256,9 +256,9 @@ public class Veterinary{
 		double incomeT = 0.0;
 
 		incomeT += gatherAllHospitalizationFees();
+		incomeT += feeServicesVeterinary(0);
 
 		return incomeT;
-
 	}
 
 
@@ -289,52 +289,52 @@ public class Veterinary{
 
 
 
-		public String medRecsFromHPet(){
-			String reply = "";
-		for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
+	public String medRecsFromHPet(){
+		String reply = "";
+	for(int i = 0 ; i < MiniRoom.ALLROOMS ; i++){
 
-			if(room[i].getAvailable() && room[i].getHostage() == null){ }
-			else{
-				reply += room[i].getHostage().showAllRecords();
-			}
-
+		if(room[i].getAvailable() && room[i].getHostage() == null){ }
+		else{
+			reply += room[i].getHostage().showAllRecords();
 		}
 
-		return reply;
-		}	
+	}
+
+	return reply;
+	}	
 
 
-		public int retrieveNumberMiniRoom(String petsName){
-		int theNumber = 0;
-		boolean theStop = false;
+	public int retrieveNumberMiniRoom(String petsName){
+	int theNumber = 0;
+	boolean theStop = false;
 
-		for(int i = 0 ; i < MiniRoom.ALLROOMS && !theStop ; i++){
+	for(int i = 0 ; i < MiniRoom.ALLROOMS && !theStop ; i++){
 
-			if(room[i].getPet().equalsIgnoreCase(petsName) ){ 
-				theNumber = room[i].getNumberOfMiniRoom();
-				theStop = true;
-				 }	
+		if(room[i].getPet().equalsIgnoreCase(petsName) ){ 
+			theNumber = room[i].getNumberOfMiniRoom();
+			theStop = true;
+			 }	
 
-		}
+	}
 
-		return theNumber;
-
-
-
-		}
+	return theNumber;
 
 
-		public String showAPetMedRecs(String name, String  id, String  petsName){
-		boolean theStop = false;
-		String reply = "ERROR: No match found";
-		
-		
-		Person person = findPerson(name, id);
-		if (person != null){
-			reply = person.givePet(petsName).showAllRecords();
-		} 
 
-		return reply;
+	}
+
+
+	public String showAPetMedRecs(String name, String  id, String  petsName){
+	boolean theStop = false;
+	String reply = "ERROR: No match found";
+	
+	
+	Person person = findPerson(name, id);
+	if (person != null){
+		reply = person.givePet(petsName).showAllRecords();
+	} 
+
+	return reply;
 
 	}
 
@@ -386,6 +386,68 @@ public class Veterinary{
 
 	}
 
+
+
+	public double feeServicesVeterinary(int serviceSelection){
+		double reply = 0.0;
+		switch (serviceSelection) {
+			case 0:
+				reply += feeServicesPeople(1);
+				reply += feeServicesPeople(2);
+				reply += feeServicesPeople(3);
+				reply += feeServicesPeople(4);
+				reply += feeServicesPeople(5);
+				break;
+			default:
+				reply = feeServicesPeople(serviceSelection);	
+				break;
+		}
+		return reply;
+	}
+
+
+	public double feeServicesPeople(int serviceSelection){
+		double reply = 0.0;
+		for (int i = 0; i<client.size() ; i++ ) {
+			reply += client.get(i).petsFeeServices(serviceSelection);	
+		}
+		return reply;
+
+	}
+
+
+	public char convertChoise2Char(int serviceSelection){
+		char answer = 'a';
+		switch (serviceSelection) {
+			case 1:
+			answer = 'b';
+				break;
+			case 2:
+			answer = 'd';
+				break;
+			case 3:
+			answer = 't';
+				break;
+			case 4:
+			answer = 'n';
+				break;
+			case 5:
+			answer = 's';
+				break;
+			default:
+				break;	
+		}
+		return answer;
+	}
+
+
+	public void startServiceVet(String name, String id, Pet clientPet, Service newService){
+		Person person = findPerson(name, id);
+		if (person != null){
+			person.startServicePers(clientPet, newService);
+		}
+
+	}
 
 
 

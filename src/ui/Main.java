@@ -145,17 +145,18 @@ private Veterinary goForIt;
 		System.out.println("");
 		System.out.println("1. Register a new client.");
 		System.out.println("2. Show clients & pets information.");
-		System.out.println("3. Show person’s contact info of a hospitalized pet by putting owner’s name or pet’s name");
-		System.out.println("4. Hospitalize a pet.");
-		System.out.println("5. Show medical records from hospitalized pets.");
-		System.out.println("6. Edit a medical record from a pet.");
-		System.out.println("7. Discharge a pet.");
-		System.out.println("8. Show income.");
-		System.out.println("9. Show average income per service.");
-		System.out.println("10.Show occupied mini room based on pet's full name.");
-		System.out.println("11.Show records from a pet.");
-		System.out.println("12.Edit address or phone number from a client");
-		System.out.println("13.QUIT PROGRAM");
+		System.out.println("3. Show person’s contact info of a hospitalized pet by putting owner’s name or pet’s name.");
+		System.out.println("4. Register a done service.");
+		System.out.println("5. Hospitalize a pet.");
+		System.out.println("6. Show medical records from hospitalized pets.");
+		System.out.println("7. Edit a medical record from a pet.");
+		System.out.println("8. Discharge a pet.");
+		System.out.println("9. Show income.");
+		System.out.println("10.Show average income per service.");
+		System.out.println("11.Show occupied mini room based on pet's full name.");
+		System.out.println("12.Show records from a pet.");
+		System.out.println("13.Edit address or phone number from a client.");
+		System.out.println("14.QUIT PROGRAM");
 		System.out.println("");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -193,7 +194,7 @@ private Veterinary goForIt;
 		System.out.println("                                                                   	      	                           d8888P ");                                                      
                                                                                           
 
-		while (userInput != 13){
+		while (userInput != 14){
 
 			showMenuOptions();
 
@@ -222,54 +223,60 @@ private Veterinary goForIt;
 					break;
 
 
+				//REGISTER A DONE SERVICE
+				case 4: 
+					registerAService();
+					break;
+
+
 				//HOSPITALIZE A PET
-				case 4:
+				case 5:
 					hospitalizeAPet();
 					break; 
 
 				//SHOW MEDICAL RECORDS FROM HOSPITALIZED PETS
-				case 5: 
+				case 6: 
 					showMedRecsFromHPet();
 					break; 
 
 				//EDIT A MEDICAL RECORD FROM A PET
-				case 6: 
+				case 7: 
 					editMedRecFromAPet();
 					break;
 
 				//DISCHARGE A PET
-				case 7: 
+				case 8: 
 					dischargeAPet();
 					break;
 
-				//SHOW INCOME FOR HOSPITALIZATIONS
-				case 8: 
+				//SHOW TOTAL INCOME AND INCOME BY SERVICE
+				case 9: 
 					showIncome();
 					break;
 
 				//SHOW AVERAGE INCOME 
-				case 9: 
+				case 10: 
 					showAverageIncome();
 					break;
 
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
-				case 10: 
+				case 11: 
 					showMiniRoomNumberByPetsName();
 					break;
 
 				//SHOW RECORDS FROM A PET
-				case 11: 
+				case 12: 
 					showAllMedRecs4Pet();
 					break;
 
 
-				//QUIT PROGRAM
-				case 12: 
+				//EDIT CLIENTS INFO
+				case 13: 
 					changeClientsInfo();
 					break;
 
 				//QUIT PROGRAM
-				case 13: 
+				case 14: 
 					theGoodbye();
 					break;
 
@@ -529,6 +536,11 @@ private Veterinary goForIt;
 		System.out.println("");
 		System.out.println("INCOME BY SERVICE ");
 		System.out.println("Income for hospitalizations: "+goForIt.gatherAllHospitalizationFees()+" COP");
+		System.out.println("Income for baths: "+goForIt.feeServicesVeterinary(1)+" COP");
+		System.out.println("Income for baths to go: "+goForIt.feeServicesVeterinary(2)+" COP");
+		System.out.println("Income for dental prophylaxis: "+goForIt.feeServicesVeterinary(3)+" COP");
+		System.out.println("Income for cutting nails: "+goForIt.feeServicesVeterinary(4)+" COP");
+		System.out.println("Income for vaccinations: "+goForIt.feeServicesVeterinary(5)+" COP");
 		System.out.println("");
 
 	}
@@ -711,6 +723,63 @@ private Veterinary goForIt;
 				System.out.println("");
 				break;	
 		}
+
+	}
+
+
+	public void registerAService(){
+		System.out.println("");
+		System.out.print("Please type the pet's full name: "); String petsName = reader.nextLine();
+		System.out.print("Please type the owner's full name: "); String name = reader.nextLine();
+		System.out.print("Please type the owner's ID: "); String id = reader.nextLine();
+		System.out.println("");
+
+		if(goForIt.checkOwner(name, id, petsName)){
+
+			System.out.println("Please select the service to register:");
+			System.out.println("1. Bath.");
+			System.out.println("2. Bath to go.");
+			System.out.println("3. Dental prophylaxis.");
+			System.out.println("4. Cutting nails.");
+			System.out.println("5. Vaccination.");
+			typeSelectionMssg();
+			int serviceSelection = reader.nextInt(); reader.nextLine();
+			plainLine();
+
+			char serviceChar = goForIt.convertChoise2Char(serviceSelection);
+
+			if(serviceChar != 'a'){
+
+				System.out.println("");
+				System.out.print("Please type the day that the service is taking/took place: "); int day = reader.nextInt(); reader.nextLine();
+				System.out.print("Please type the month that the service is taking/took place: "); int month = reader.nextInt(); reader.nextLine();
+				System.out.print("Please type the year that the service is taking/took place: "); int year = reader.nextInt(); reader.nextLine();
+
+				Calendar today = new GregorianCalendar();
+				int yearT = today.get(Calendar.YEAR);
+
+				if (year <= yearT ) {
+					DateIn newDateJob = new DateIn(day, month, year);
+					Pet clientPet = goForIt.retrievePet(name, id, petsName);
+					Service newService = new Service(serviceChar, id, petsName, clientPet, newDateJob);
+					goForIt.startServiceVet(name, id, clientPet, newService);
+					System.out.println("");
+					System.out.println("The service has been successfully registered!");
+					System.out.println("");
+
+
+				}else {System.out.println("");
+						System.out.println("ERROR: Invalid date.");
+						System.out.println("");}
+
+			}else {System.out.println("");
+				   System.out.println("ERROR: Invalid selection.");
+				   System.out.println("");}
+
+		} else {System.out.println("");
+				System.out.println("ERROR: No match found.");
+				System.out.println("");}
+
 
 	}
 	
