@@ -146,17 +146,19 @@ private Veterinary goForIt;
 		System.out.println("1. Register a new client.");
 		System.out.println("2. Show clients & pets information.");
 		System.out.println("3. Show person’s contact info of a hospitalized pet by putting owner’s name or pet’s name.");
-		System.out.println("4. Register a done service.");
+		System.out.println("4. Register a service.");
 		System.out.println("5. Hospitalize a pet.");
-		System.out.println("6. Show medical records from hospitalized pets.");
-		System.out.println("7. Edit a medical record from a pet.");
-		System.out.println("8. Discharge a pet.");
-		System.out.println("9. Show income.");
-		System.out.println("10.Show average income per service.");
-		System.out.println("11.Show occupied mini room based on pet's full name.");
-		System.out.println("12.Show records from a pet.");
-		System.out.println("13.Edit address or phone number from a client.");
-		System.out.println("14.QUIT PROGRAM");
+		System.out.println("6. Show service reports between two dates.");
+		System.out.println("7. Show medical records from hospitalized pets.");
+		System.out.println("8. Edit a medical record from a pet.");
+		System.out.println("9. Discharge a pet.");
+		System.out.println("10.Show income.");
+		System.out.println("11.Show average income per service.");
+		System.out.println("12.Show average income by week.");
+		System.out.println("13.Show occupied mini room based on pet's full name.");
+		System.out.println("14.Show records from a pet.");
+		System.out.println("15.Edit address or phone number from a client.");
+		System.out.println("16.QUIT PROGRAM");
 		System.out.println("");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -194,7 +196,7 @@ private Veterinary goForIt;
 		System.out.println("                                                                   	      	                           d8888P ");                                                      
                                                                                           
 
-		while (userInput != 14){
+		while (userInput != 16){
 
 			showMenuOptions();
 
@@ -234,49 +236,60 @@ private Veterinary goForIt;
 					hospitalizeAPet();
 					break; 
 
+				//SHOW SERVICE REPORTS BETWEEN TWO DATES
+				case 6:
+					serviceReportsBetweenDates();
+					break; 
+
 				//SHOW MEDICAL RECORDS FROM HOSPITALIZED PETS
-				case 6: 
+				case 7: 
 					showMedRecsFromHPet();
 					break; 
 
 				//EDIT A MEDICAL RECORD FROM A PET
-				case 7: 
+				case 8: 
 					editMedRecFromAPet();
 					break;
 
 				//DISCHARGE A PET
-				case 8: 
+				case 9: 
 					dischargeAPet();
 					break;
 
 				//SHOW TOTAL INCOME AND INCOME BY SERVICE
-				case 9: 
+				case 10: 
 					showIncome();
 					break;
 
 				//SHOW AVERAGE INCOME 
-				case 10: 
+				case 11: 
 					showAverageIncome();
 					break;
 
+				//SHOW AVERAGE INCOME 
+				case 12: 
+					showAverageIncomeByWeek();
+					break;
+
+
 				//SHOW OCCUPIED MINI ROOM BASED ON PET'S NAME
-				case 11: 
+				case 13: 
 					showMiniRoomNumberByPetsName();
 					break;
 
 				//SHOW RECORDS FROM A PET
-				case 12: 
+				case 14: 
 					showAllMedRecs4Pet();
 					break;
 
 
 				//EDIT CLIENTS INFO
-				case 13: 
+				case 15: 
 					changeClientsInfo();
 					break;
 
 				//QUIT PROGRAM
-				case 14: 
+				case 16: 
 					theGoodbye();
 					break;
 
@@ -780,6 +793,70 @@ private Veterinary goForIt;
 				System.out.println("ERROR: No match found.");
 				System.out.println("");}
 
+
+	}
+
+
+
+	public void serviceReportsBetweenDates(){
+
+		System.out.println("");
+		System.out.print("Please type the day of the initial date: "); int day = reader.nextInt(); reader.nextLine();
+		System.out.print("Please type the month of the initial date: "); int month = reader.nextInt(); reader.nextLine();
+		System.out.print("Please type the year of the initial date: "); int year = reader.nextInt(); reader.nextLine();
+
+		Calendar today = new GregorianCalendar();
+		int yearT = today.get(Calendar.YEAR);
+
+		if (year <= yearT ) {
+			System.out.println("");
+			System.out.print("Please type the day of the final date: "); int dayE = reader.nextInt(); reader.nextLine();
+			System.out.print("Please type the month of the final date: "); int monthE = reader.nextInt(); reader.nextLine();
+			System.out.print("Please type the year of the final date: "); int yearE = reader.nextInt(); reader.nextLine();
+
+			if (yearE <= yearT ) {
+
+				if (year <= yearE) {
+					DateIn initialDate = new DateIn (day, month, year);
+					DateIn finalDate = new DateIn (dayE, monthE, yearE);
+					
+					System.out.println(goForIt.datesServiceReports(initialDate, finalDate));
+
+				} else {System.out.println("");
+				   System.out.println("ERROR: Invalid date.");
+				   System.out.println("");}
+				
+
+			} else {System.out.println("");
+				   System.out.println("ERROR: Invalid date.");
+				   System.out.println("");}
+
+		} else {System.out.println("");
+			   System.out.println("ERROR: Invalid date.");
+			   System.out.println("");}
+	}
+
+
+	public void showAverageIncomeByWeek(){
+		System.out.println("");
+		System.out.print("Please type the day of the initial date: "); int day = reader.nextInt(); reader.nextLine();
+		System.out.print("Please type the month of the initial date: "); int month = reader.nextInt(); reader.nextLine();
+		System.out.print("Please type the year of the initial date: "); int year = reader.nextInt(); reader.nextLine();
+
+		Calendar today = new GregorianCalendar();
+		int yearT = today.get(Calendar.YEAR);
+
+		if (year <= yearT ) {
+
+			DateIn initialDate = new DateIn (day, month, year);
+
+			//****************************************
+			//******************TODO******************
+			//****************************************
+
+		}else {System.out.println("");
+				   System.out.println("ERROR: Invalid date.");
+				   System.out.println("");}
 
 	}
 	

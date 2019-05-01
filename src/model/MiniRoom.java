@@ -12,20 +12,20 @@ package model;
 
 public class MiniRoom { 
 
-//CONSTANTS
-public final static int ALLROOMS = 8;
+	//CONSTANTS
+	public final static int ALLROOMS = 8;
 
-//ATTRIBUTES 
-private boolean available;
-private int numberOfMiniRoom;
-private String pet;
-private String owner;
+	//ATTRIBUTES 
+	private boolean available;
+	private int numberOfMiniRoom;
+	private String pet;
+	private String owner;
 
-//RELATIONSHIPS
-private Pet hostage;
+	//RELATIONSHIPS
+	private Pet hostage;
 
 
-//METHODS
+	//METHODS
 	public MiniRoom(boolean available, int numberOfMiniRoom, String pet, String owner, Pet hostage){
 		this.available = available;
 		this.numberOfMiniRoom = numberOfMiniRoom;

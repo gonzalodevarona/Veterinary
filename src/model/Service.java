@@ -5,7 +5,7 @@
 * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
 * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
 * @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 18 APRIL 2019
+* @LAST UPDATE DATE: 23 APRIL 2019
 * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 */
 package model;
@@ -41,16 +41,18 @@ public class Service{
 
 	//METHODS
 
-	public Service(char type, String ownerId, String petId, Pet pet, DateIn dateService){
+	public Service(char type, String ownerId, String petId, Pet clientPet, DateIn dateJob){
 		this.type = type;
 		this.ownerId = ownerId;
 		this.petId = petId;
+		this.clientPet = clientPet;
+		this.dateJob = dateJob;
 		price = setInitialPrice();
 	}
 
 
 	public  char getType() {
-	return type;
+		return type;
 	}
 
 
@@ -59,11 +61,11 @@ public class Service{
 	}
 
 	public  double getPrice() {
-	return price;
+		return price;
 	}
 
 	public  String getOwnerId() {
-	return ownerId;
+		return ownerId;
 	}
 
 
@@ -74,12 +76,32 @@ public class Service{
 
 
 	public  String getPetId() {
-	return petId;
+		return petId;
 	}
 
 
 	public void setPetId(String petId) {
 		this.petId = petId;
+	}
+
+
+	public  Pet getClientPet() {
+		return clientPet;
+	}
+
+
+	public void setClientPet(Pet clientPet) {
+		this.clientPet = clientPet;
+	}
+
+
+	public  DateIn getDateJob() {
+		return dateJob;
+	}
+
+
+	public void setDateJob(DateIn dateJob) {
+		this.dateJob = dateJob;
 	}
 
 	public double setInitialPrice(){

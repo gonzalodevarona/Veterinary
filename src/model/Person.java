@@ -262,7 +262,21 @@ public class Person{
 
 	public void startServicePers(Pet clientPet, Service newService){
 		clientPet.addService(newService);
+	}
 
+
+	public String myPetsServiceReports(DateIn initialDate, DateIn finalDate){
+		String reply = "";
+
+		for (int i = 0; i<animal.size() ; i++ ) {
+
+			ArrayList<Service> myServices = animal.get(i).serviceBetweenDates(initialDate, finalDate);
+
+			for (int in = 0; in<myServices.size() ; in++ ) {
+			reply += myServices.get(in).toString();
+			}
+		}
+		return reply;
 	}
 
 

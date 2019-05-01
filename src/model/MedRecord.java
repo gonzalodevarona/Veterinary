@@ -1,13 +1,13 @@
-/*
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-* ID
-* UNIVERSIDAD ICESI (CALI-COLOMBIA)
-* DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
-* LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
-* @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 22 MARCH 2019
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-*/
+/**
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ * ID
+ * UNIVERSIDAD ICESI (CALI-COLOMBIA)
+ * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
+ * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
+ * @author: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
+ * @version: 1 MAY 2019
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ */
 
 package model;
 import java.util.*;
@@ -64,8 +64,15 @@ public class MedRecord{
 	}
 
 
+	/**
+	* Allows to get the information (name, type of animal, age in years, weight in Kg, height in metres and BMI) 
+	* from the pet in matter of a medical record. <br>
+	* <b>post:</b> The information of the pet in matter of a medical record is given.
+	* @return The information of the pet in matter of a medical record
+	*/
+
 	public  String getPetInfo() {
-	return petInfo;
+		return petInfo;
 	}
 
 
@@ -75,8 +82,14 @@ public class MedRecord{
 
 
 
+	/**
+	* Allows to get the information (name, ID, address and phone number) from the owner of pet in matter of a medical record. <br>
+	* <b>post:</b> The information from the owner of the pet in matter of a medical record is given.
+	* @return The information from the owner of the pet in matter of a medical record
+	*/
+
 	public  String getOwnerInfo() {
-	return ownerInfo;
+		return ownerInfo;
 	}
 
 
@@ -86,8 +99,14 @@ public class MedRecord{
 
 
 
+	/**
+	* Allows to get the symptoms of a medical record. <br>
+	* <b>post:</b> The symptoms of a medical record are given.
+	* @return The symptoms of a medical record
+	*/
+
 	public  String getSymptoms() {
-	return symptoms;
+		return symptoms;
 	}
 
 
@@ -97,8 +116,14 @@ public class MedRecord{
 
 
 
+	/**
+	* Allows to get the diagnosys of a medical record. <br>
+	* <b>post:</b> The diagnosys of a medical record is given.
+	* @return The diagnosys of a medical record
+	*/
+
 	public  String getDiagnosys() {
-	return diagnosys;
+		return diagnosys;
 	}
 
 
@@ -107,9 +132,14 @@ public class MedRecord{
 	}
 
 
+	/**
+	* Allows to get the status (open or closed) of a medical record. <br>
+	* <b>post:</b> The status of a medical record is given.
+	* @return The status of a medical record
+	*/
 
 	public  String getStatus() {
-	return status;
+		return status;
 	}
 
 
@@ -117,9 +147,13 @@ public class MedRecord{
 		this.status = status;
 	}
 
-
+	/**
+	* Allows to get the date when the veterinary created the medical record. <br>
+	* <b>post:</b> The date when the veterinary created the medical record is given.
+	* @return The date when the veterinary created the medical record
+	*/
 	public  DateIn getDateInn() {
-	return dateInn;
+		return dateInn;
 	}
 
 
@@ -129,8 +163,14 @@ public class MedRecord{
 
 
 
+	/**
+	* Allows to get the date when the veterinary discharged the medical record. <br>
+	* <b>post:</b> The date when the veterinary discharged the medical record is given.
+	* @return The date when the veterinary discharged the medical record
+	*/
+
 	public  DateIn getDateOut() {
-	return dateOut;
+		return dateOut;
 	}
 
 
@@ -140,8 +180,14 @@ public class MedRecord{
 
 
 
+	/**
+	* Allows to get the pet (object) of the medical record. <br>
+	* <b>post:</b> The pet (object) of the medical record is given.
+	* @return The pet (object) of the medical record
+	*/
+
 	public  Pet getSick() {
-	return sick;
+		return sick;
 	}
 
 
@@ -150,9 +196,13 @@ public class MedRecord{
 	}
 
 
-
+	/**
+	* Allows to get the cost of the medical record. <br>
+	* <b>post:</b> The cost of the medical record is given.
+	* @return The cost of the medical record
+	*/
 	public  double getFee() {
-	return fee;
+		return fee;
 	}
 
 
@@ -160,6 +210,12 @@ public class MedRecord{
 		this.fee = fee;
 	}
 
+	/**
+	* When creating a new medical record, this method allows to add the prescribed medications to the medical record for the first time. <br>
+	* <b>pre:</b> The prescribed medications have been created before invocating this method. <br>
+	* <b>post:</b> The cost of the medical record is given.
+	* @param The prescribed medications. The size of this param could be greater or equal to zero.
+	*/
 	public void addMeds(ArrayList<ReqMed> petsMeds){
 		med = petsMeds;
 	}
@@ -368,7 +424,14 @@ public class MedRecord{
 		return total;
 	} 
 
-
+	/**
+	* This method. <br>
+	* <b>pre:</b> This method must be invocated over an existing medical record <br>
+	* <b>post:</b> The cost of the medical record is given.
+	* @see showMedsinfo()
+	* @see convertDateToString()
+	* @return The information of a prescribed medication such as name, dose, price per dose and frecuency in a format to be shown further to the user
+	*/
 	public String medRecordInfo(){
 		String reply = "\n";
 			   reply += "\n";
@@ -393,11 +456,13 @@ public class MedRecord{
 			   reply += "+-----------------------------------------------------------------------------+\n";
 			   reply += "| Prescribed medications:\n";
 			   reply += "|\n";
+
 			   int number = 0;
+
 				for (int i = 0; i < med.size() ; i++ ) {
 					++number;
-				reply += "| Med #"+number+"\n";
-				reply += med.get(i).showMedsinfo();			
+					reply += "| Med #"+number+"\n";
+					reply += med.get(i).showMedsinfo();			
 				}
 
 				 reply += "+-----------------------------------------------------------------------------+\n";
@@ -414,4 +479,4 @@ public class MedRecord{
 	}
 
 
- } //final
+ } //end of class

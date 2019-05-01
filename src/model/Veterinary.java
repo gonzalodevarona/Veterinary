@@ -450,6 +450,25 @@ public class Veterinary{
 	}
 
 
+	public String datesServiceReports(DateIn initialDate, DateIn finalDate){
+		String reports = "";
+
+		if(initialDate.getYear() == finalDate.getYear()){
+
+			for (int i = 0; i < client.size() ; i++ ) {
+				reports += client.get(i).myPetsServiceReports(initialDate, finalDate);	
+			}
+
+		} /*else if ( (finalDate.getYear()-initialDate.getYear()) == 1 ){
+
+		} else {
+
+		} */
+		
+		return reports;
+	}
+
+
 
 
 

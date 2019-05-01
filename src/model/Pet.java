@@ -1,13 +1,13 @@
-/*
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-* ID
-* UNIVERSIDAD ICESI (CALI-COLOMBIA)
-* DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
-* LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
-* @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 15 APRIL 2019
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-*/
+/**
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ * ID
+ * UNIVERSIDAD ICESI (CALI-COLOMBIA)
+ * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
+ * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
+ * @author: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
+ * @version: 29 APRIL 2019
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ */
 
 package model;
 import java.util.*;
@@ -109,11 +109,11 @@ public class Pet{
 	}
 
 	/**
-	*Description This method allows to calculate the body mass index for a pet.
-	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
-	*post: The BMI is calculated.
-	*@return The pet body mass index.
-	*@throws  If the height is zero, so an exception is thrown due to the division on zero does not exist.
+	* This method allows to calculate the body mass index for a pet. <br>
+	* <b>pre:</b> The pet was created before and its attributes height and weight are not null neither height must be zero. <br>
+	* <b>post:</b> The BMI is calculated.
+	* @return The pet body mass index.
+	* @throws  If the height is zero, so an exception is thrown due to the division on zero does not exist.
 	*/
 
 
@@ -188,10 +188,10 @@ public class Pet{
 
 
 	/**
-	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
-	*pre: The patient clinic story must be not null.
-	*post: A new symptom were added to the patient clinic story.
-	*@param The new symptom presented. This param must be not null.
+	* This method allows to add a new symptom presented during the hospitalization at the patient stories. <br>
+	* <b>pre:</b> The patient clinic story must be not null. <br>
+	* <b>post:</b> A new symptom were added to the patient clinic story. <br>
+	* @param The new symptom presented. This param must be not null.
 	*/
 
 	public void addSymptoms(String symptomsEdit){
@@ -203,10 +203,10 @@ public class Pet{
 
 
 	/**
-	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
-	*pre: The patient clinic story must be not null.
-	*post: New notes were added to the possible diagnostic in the patient clinic story.
-	*@param The notes of possible diagnostic. This param must be not null.
+	* This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories. <br>
+	* <b>pre:</b> The patient clinic story must be not null. <br>
+	* <b>post:</b> New notes were added to the possible diagnostic in the patient clinic story.
+	* @param The notes of possible diagnostic. This param must be not null.
 	*/
 
 	public void addDiagnosys(String diagnosysEdit){
@@ -218,14 +218,14 @@ public class Pet{
 
 
 	/**
-	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
-	*pre: The patient clinic story must be not null.
-	*post: New medicines were added to the patient clinic story.
-	*@param The medicine name. This param must be not null.
-	*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned. This param must be not null.
-	*@param The medicine cost by each dose. This param could be empty.
-	*@param The frequency of medicine application. This param could be empty.
-	*@return A message that indiques if medicine was added to the patient clinic story
+	* This method allows to add new medicines that were prescription during the hospitalization at the patient stories. <br>
+	* <b>pre:</b> The patient clinic story must be not null. <br>
+	* <b>post:</b> New medicines were added to the patient clinic story. <br>
+	* @param The medicine name. This param must be not null.
+	* @param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned. This param must be not null.
+	* @param The medicine cost by each dose. This param could be empty.
+	* @param The frequency of medicine application. This param could be empty.
+	* @return A message that indiques if medicine was added to the patient clinic story
 	*/
 
 	public String addMedicine(String medsName, double medsDose, double medsPrice, String medsFrecuency){
@@ -290,6 +290,26 @@ public class Pet{
 
 	public void addService(Service newService){
 		services.add(newService);
+	}
+
+
+
+	public ArrayList<Service> serviceBetweenDates(DateIn initialDate, DateIn finalDate){
+		ArrayList<Service> myServices = new ArrayList<Service>();
+
+		int initialDateInYear = initialDate.calculateDayOfTheYear();
+		int finalDateInYear = finalDate.calculateDayOfTheYear();
+
+		for (int i = 0; i < services.size() ; i++ ) {
+
+			int dayOfYearOfServiceInMatter = services.get(i).getDateJob().calculateDayOfTheYear();
+
+			if (dayOfYearOfServiceInMatter >= initialDateInYear && dayOfYearOfServiceInMatter <= finalDateInYear) {
+				myServices.add(services.get(i));
+			}
+		}
+		
+		return myServices;
 	}
 
 
