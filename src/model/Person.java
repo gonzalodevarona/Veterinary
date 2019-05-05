@@ -1,13 +1,14 @@
-/*
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-* ID
-* UNIVERSIDAD ICESI (CALI-COLOMBIA)
-* DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
-* LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
-* @AUTHOR: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
-* @LAST UPDATE DATE: 15 APRIL 2019
-* ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-*/
+/**
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ * ID
+ * UNIVERSIDAD ICESI (CALI-COLOMBIA)
+ * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
+ * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
+ * @author: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
+ * @version: 4 MAY 2019
+ * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+ */
+
 package model;
 import java.util.*;
 
@@ -28,6 +29,14 @@ public class Person{
 
 	//METHODS
 
+	/**
+	* Constructor method for class Person which is a human client of the veterinary and is the owner of as minimum of one pet. <br>
+	* @param name The person's name. This param must not be empty.
+	* @param id The person's unique ID. This param must not be empty.
+	* @param address The person's address. This param must not be empty.
+	* @param phone The person's phone number. This param must not be empty.
+	*/
+
 	public Person(String name, String id, String address, String phone){
 		this.name = name;
 		this.id = id;
@@ -37,20 +46,42 @@ public class Person{
 	}
 
 
+	/**
+	* Allows to get the person's name. <br>
+	* @return The person's name
+	*/
+
 	public  String getName() {
-	return name;
+		return name;
 	}
 
+
+	/**
+	* Allows to change the person's name. <br>
+	* <b>post:</b> The person's name is changed. 
+	* @param name The person's name
+	*/
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
 
+	/**
+	* Allows to get the person's unique ID. <br>
+	* @return The person's unique ID
+	*/
+
 	public  String getId() {
-	return id;
+		return id;
 	}
 
+
+	/**
+	* Allows to change the person's unique ID. <br>
+	* <b>post:</b> The person's unique ID is changed. 
+	* @param id The person's unique ID
+	*/
 
 	public void setId(String id) {
 		this.id = id;
@@ -58,10 +89,21 @@ public class Person{
 
 
 
+	/**
+	* Allows to get the person's address. <br>
+	* @return The person's address
+	*/
+
 	public  String getAddress() {
-	return address;
+		return address;
 	}
 
+
+	/**
+	* Allows to change the person's address. <br>
+	* <b>post:</b> The person's address is changed. 
+	* @param address The person's address
+	*/
 
 	public void setAddress(String address) {
 		this.address = address;
@@ -69,22 +111,46 @@ public class Person{
 
 
 
+	/**
+	* Allows to get the person's phone number. <br>
+	* @return The person's phone number
+	*/
+
 	public  String getPhone() {
-	return phone;
+		return phone;
 	}
+
+
+	/**
+	* Allows to change the person's phone number. <br>
+	* <b>post:</b> The person's phone number is changed. 
+	* @param phone The person's phone number
+	*/
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 
+	/**
+	* When creating a new human client (a person object), this method allows to add its pets the first time. <br>
+	* <b>pre:</b> The human client (a person object) has been created before invocating this method. <br>
+	* <b>post:</b> The pet(s) has/have been added to a human client (a person object) for the first time.
+	* @param clientsPets The pet(s). The size of this param must be greater than zero.
+	*/
 	public void createPet(ArrayList<Pet> clientsPets){
-
 		animal = clientsPets;
-
 	}
 
 
+
+	/**
+	* Information of a person such as name, unique ID, address, phone number and its pets info is organized in a format
+	* so it can be shown to the final user<br>
+	* <b>pre:</b> This method must be invocated over an existing person <br>
+	* @see Pet.showPetsinfo()
+	* @return The information of a person in a format to be shown to the final user
+	*/
 
 	public String showMyinfo(){
 		String reply = "";
@@ -114,6 +180,13 @@ public class Person{
 
 
 
+	/**
+	* Contact information of a person such as name, unique ID, address and phone number is organized in a format
+	* so it can be shown to the final user<br>
+	* <b>pre:</b> This method must be invocated over an existing person <br>
+	* @return The contact information of a person in a format to be shown to the final user
+	*/
+
 	public String contactInfo(){
 		String reply = "";
 
@@ -129,26 +202,36 @@ public class Person{
 	}
 
 
-	public boolean reviewPet(String theName){
 
+	/**
+	* This method allows to get the added price for a specific service or the price of every service added<br>
+	* @see Pet.getName()
+	* @param theName The given name to make the search in order to know if it matches a pet's name from a single person (object)
+	* @return If the given name matches or no to a pet's name from a single person
+	*/
+
+	public boolean reviewPet(String theName){
 		boolean hasIt = false;
 
 		for (int i = 0; i < animal.size() && !hasIt ; i++ ) {
-
 			if ((animal.get(i).getName()).equalsIgnoreCase(theName)) {
-
 				hasIt = true;
 			}
-
 		}
-
 		return hasIt;
 	}
 
 
 
+	/**
+	* This method allows to get the added price for a specific service or the price of every service added<br>
+	* @see  givePet()
+	* @see Pet.addMedRec()
+	* @param petsName The given name to make the search in order to know if it matches a pet's name from a single person (object)
+	* @param newMedRec
+	* @param petsMeds
+	*/
 	public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
-
 		Pet pet = givePet(petsName);
 
 		if(pet != null){
@@ -220,8 +303,8 @@ public class Person{
 	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
 	*pre: The client was created before.
 	*post: The address and /or phone number of the client is updated.
-	*@param The new address of the client. This param could be empty.
-	*@param The new phone number of the client. This param could be empty.
+	*@param newAddress The new address of the client. This param could be empty.
+	*@param newPhone The new phone number of the client. This param could be empty.
 	*/
 
 	public void modifyAddressOrPhone(String newAddress, String newPhone){
@@ -281,10 +364,35 @@ public class Person{
 
 
 
+	public double petsServicesWeeklyIncome(DateIn initialDate){
+		double reply = 0;
+
+		for (int i = 0; i< animal.size() ; i++) {
+			reply += animal.get(i).weeklyIncome(initialDate);
+			
+		}
+
+		return reply;
+	}
+
+
+	public int petsServicesWeeklyIncomeCounter(DateIn initialDate){
+		int reply = 0;
+
+		for (int i = 0; i< animal.size() ; i++) {
+			reply += animal.get(i).weeklyIncomeCounter(initialDate);
+			
+		}
+
+		return reply;
+	}
+
+
+
 
 
 
 
 
  
- } //final
+ } //end of class

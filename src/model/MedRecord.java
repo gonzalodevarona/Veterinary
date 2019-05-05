@@ -5,7 +5,7 @@
  * DEPARTAMENTO TIC - ALGORTIMOS Y PROGRAMACIÓN I
  * LAB FOR VETERINARY MI PEQUENIA MASCOTA CODE
  * @author: GONZALO DE VARONA <gonzalo.de1@correo.icesi.edu.co>
- * @version: 1 MAY 2019
+ * @version: 3 MAY 2019
  * ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
  */
 
@@ -49,6 +49,17 @@ public class MedRecord{
 
 	//METHODS
 
+	/**
+	* Constructor method for class MedRecord which is a medical record for the veterinary. <br>
+	* @param petInfo The pet's information for the hospitalization. This param must not be empty.
+	* @param ownerInfo The pet's owner information for the hospitalization. This param must not be empty.
+	* @param symptoms The symptoms of the pet for the medical record. 
+	* @param diagnosys The diagnosys of the pet for the medical record. 
+	* @param status The status of the medical record. This param must not be empty.
+	* @param dateInn The date (object) when the hospitalization started. This param must not be null.
+	* @param sick The pet (object) in matter for the medical record. This param must not be null.
+	*/
+
 	public MedRecord(String petInfo, String ownerInfo, String symptoms, String diagnosys, String status, DateIn dateInn, Pet sick){
 		this.petInfo = petInfo;
 		this.ownerInfo = ownerInfo;
@@ -67,7 +78,6 @@ public class MedRecord{
 	/**
 	* Allows to get the information (name, type of animal, age in years, weight in Kg, height in metres and BMI) 
 	* from the pet in matter of a medical record. <br>
-	* <b>post:</b> The information of the pet in matter of a medical record is given.
 	* @return The information of the pet in matter of a medical record
 	*/
 
@@ -75,6 +85,12 @@ public class MedRecord{
 		return petInfo;
 	}
 
+
+	/**
+	* Allows to change the pet's information for a hospitalization. <br>
+	* <b>post:</b> The pet's information for a hospitalization is changed. 
+	* @param petInfo The pet's information for a hospitalization
+	*/
 
 	public void setPetInfo(String petInfo) {
 		this.petInfo = petInfo;
@@ -84,7 +100,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the information (name, ID, address and phone number) from the owner of pet in matter of a medical record. <br>
-	* <b>post:</b> The information from the owner of the pet in matter of a medical record is given.
 	* @return The information from the owner of the pet in matter of a medical record
 	*/
 
@@ -92,6 +107,12 @@ public class MedRecord{
 		return ownerInfo;
 	}
 
+
+	/**
+	* Allows to change the pet's owner information for a hospitalization. <br>
+	* <b>post:</b> The pet's owner information for a hospitalization is changed. 
+	* @param ownerInfo The pet's owner information for a hospitalization
+	*/
 
 	public void setOwnerInfo(String ownerInfo) {
 		this.ownerInfo = ownerInfo;
@@ -101,7 +122,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the symptoms of a medical record. <br>
-	* <b>post:</b> The symptoms of a medical record are given.
 	* @return The symptoms of a medical record
 	*/
 
@@ -109,6 +129,12 @@ public class MedRecord{
 		return symptoms;
 	}
 
+
+	/**
+	* Allows to change the symptoms of a hospitalization. <br>
+	* <b>post:</b> The symptoms of a hospitalization is changed. 
+	* @param symptoms The symptoms of a hospitalization.
+	*/
 
 	public void setSymptoms(String symptoms) {
 		this.symptoms = symptoms;
@@ -118,7 +144,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the diagnosys of a medical record. <br>
-	* <b>post:</b> The diagnosys of a medical record is given.
 	* @return The diagnosys of a medical record
 	*/
 
@@ -127,6 +152,12 @@ public class MedRecord{
 	}
 
 
+	/**
+	* Allows to change the diagnosys of a hospitalization. <br>
+	* <b>post:</b> The diagnosys of a hospitalization is changed. 
+	* @param diagnosys The diagnosys of a hospitalization.
+	*/
+
 	public void setDiagnosys(String diagnosys) {
 		this.diagnosys = diagnosys;
 	}
@@ -134,7 +165,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the status (open or closed) of a medical record. <br>
-	* <b>post:</b> The status of a medical record is given.
 	* @return The status of a medical record
 	*/
 
@@ -143,19 +173,30 @@ public class MedRecord{
 	}
 
 
+	/**
+	* Allows to change the status of a hospitalization. <br>
+	* <b>post:</b> The status of a hospitalization is changed. 
+	* @param status The status (open/closed) of a hospitalization.
+	*/
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
 	/**
 	* Allows to get the date when the veterinary created the medical record. <br>
-	* <b>post:</b> The date when the veterinary created the medical record is given.
 	* @return The date when the veterinary created the medical record
 	*/
 	public  DateIn getDateInn() {
 		return dateInn;
 	}
 
+
+	/**
+	* Allows to change the date (object) when the hospitalization started. <br>
+	* <b>post:</b> The date (object) when the hospitalization started is changed. 
+	* @param dateInn The date (object) when the hospitalization started
+	*/
 
 	public void setDateInn(DateIn dateInn) {
 		this.dateInn = dateInn;
@@ -165,7 +206,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the date when the veterinary discharged the medical record. <br>
-	* <b>post:</b> The date when the veterinary discharged the medical record is given.
 	* @return The date when the veterinary discharged the medical record
 	*/
 
@@ -173,6 +213,12 @@ public class MedRecord{
 		return dateOut;
 	}
 
+
+	/**
+	* Allows to change the date (object) when the hospitalization ended. <br>
+	* <b>post:</b> The date (object) when the hospitalization ended is changed. 
+	* @param dateOut The date (object) when the hospitalization ended
+	*/
 
 	public void setDateOut(DateIn dateOut) {
 		this.dateOut = dateOut;
@@ -182,7 +228,6 @@ public class MedRecord{
 
 	/**
 	* Allows to get the pet (object) of the medical record. <br>
-	* <b>post:</b> The pet (object) of the medical record is given.
 	* @return The pet (object) of the medical record
 	*/
 
@@ -191,21 +236,30 @@ public class MedRecord{
 	}
 
 
+	/**
+	* Allows to change the pet(object) in matter of a hospitalization . <br>
+	* <b>post:</b> The pet(object) in matter of a hospitalization is changed. 
+	* @param sick A pet(object)
+	*/
 	public void setSick(Pet sick) {
 		this.sick = sick;
 	}
 
 
 	/**
-	* Allows to get the cost of the medical record. <br>
-	* <b>post:</b> The cost of the medical record is given.
-	* @return The cost of the medical record
+	* Allows to get the cost of a hospitalization. <br>
+	* @return The cost a hospitalization
 	*/
 	public  double getFee() {
 		return fee;
 	}
 
 
+	/**
+	* Allows to change the final cost of a hospitalization (for now it should not be used but maybe any time in the future it should). <br>
+	* <b>post:</b> The final cost of a hospitalization is changed. 
+	* @param fee The final cost of a hospitalization.
+	*/
 	public void setFee(double fee) {
 		this.fee = fee;
 	}
@@ -213,14 +267,25 @@ public class MedRecord{
 	/**
 	* When creating a new medical record, this method allows to add the prescribed medications to the medical record for the first time. <br>
 	* <b>pre:</b> The prescribed medications have been created before invocating this method. <br>
-	* <b>post:</b> The cost of the medical record is given.
-	* @param The prescribed medications. The size of this param could be greater or equal to zero.
+	* <b>post:</b> The prescribed medications have been added to a medical record for the first time.
+	* @param petsMeds The prescribed medications. The size of this param could be greater or equal to zero.
 	*/
 	public void addMeds(ArrayList<ReqMed> petsMeds){
 		med = petsMeds;
 	}
 
 
+	/**
+	* Allows to calculate the cost of a hospitalization depending on the status of the medical record, the type of animal 
+	* of the hospitalization and the days of the hospitalization. <br>
+	* @see DateIn.getDay()
+	* @see DateIn.getMonth()
+	* @see DateIn.getYear()
+	* @see Pet.getType()
+	* @see Pet.getWeight()
+	* @see RqeMed.priceMed()
+	* @return The final cost a hospitalization
+	*/
 
 	public double calculatingFee(){
 		double total = 0.0;
@@ -317,11 +382,6 @@ public class MedRecord{
 							
 					}	
 					
-						for (int i = 0; i < med.size() ; i++ ) {
-							total += med.get(i).priceMed() ;
-						}
-					
-					
 
 			} else { int dayE = dateOut.getDay();
 					
@@ -395,7 +455,6 @@ public class MedRecord{
 						break;
 						case Pet.OTHER:
 
-
 							if (sick.getWeight() >= 1.0 && sick.getWeight() <= 3.0 ) {
 								total = (double)(daysDifferenceWithEndDate * P10);
 								
@@ -411,26 +470,25 @@ public class MedRecord{
 							}
 						break;
 							
-					}
-					
-						for (int in = 0 ; in < med.size() ; in++ ) {
-								total = total + med.get(in).priceMed() ;
-						}
-					
+					}				
 			}
+
+			for (int i = 0; i < med.size(); i++ ) {
+				total += med.get(i).priceMed();
+			}					
 		}
-
-
 		return total;
-	} 
+	}
+
 
 	/**
-	* This method. <br>
+	* Information of a medical record such as pet's information, pet's owner information, dose, date when the hospitalization started and/or ended, 
+	* symptoms of the pacient, diagnosys of the pacient, status of the hospitalization (open/closed), cost of the hospitalization and prescribed 
+	* medication info is organized so it can be  shown to the final user<br>
 	* <b>pre:</b> This method must be invocated over an existing medical record <br>
-	* <b>post:</b> The cost of the medical record is given.
-	* @see showMedsinfo()
-	* @see convertDateToString()
-	* @return The information of a prescribed medication such as name, dose, price per dose and frecuency in a format to be shown further to the user
+	* @see ReqMed.showMedsinfo()
+	* @see DateIn.convertDateToString()
+	* @return The information of a medical record in a format to be shown to the final user
 	*/
 	public String medRecordInfo(){
 		String reply = "\n";
@@ -474,6 +532,12 @@ public class MedRecord{
 
 	}
 
+	/**
+	* Allows to add a new prescribed medication to a medical record. <br>
+	* <b>pre:</b> The new prescribed medication was created before. <br>
+	* <b>post:</b> A new prescribed medication is added to a medical record.
+	* @param medInMatter A new prescribed medication. Param must not be null.
+	*/
 	public void addNewMed(ReqMed medInMatter){
 		med.add(medInMatter);
 	}

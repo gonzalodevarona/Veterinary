@@ -450,6 +450,24 @@ public class Veterinary{
 	}
 
 
+
+	public double weeklyAverageIncome(DateIn initialDate){
+		double reply = 0;
+		int counter = 0;
+		Person clientInMatter = null;
+		for (int i = 0; i < client.size()  ; i++ ) {
+			 clientInMatter = client.get(i);
+			 reply += clientInMatter.petsServicesWeeklyIncome(initialDate);
+			 counter += clientInMatter.petsServicesWeeklyIncomeCounter(initialDate);	
+		}
+
+		reply = reply / counter;
+
+
+		return reply;
+	}
+
+
 	public String datesServiceReports(DateIn initialDate, DateIn finalDate){
 		String reports = "";
 

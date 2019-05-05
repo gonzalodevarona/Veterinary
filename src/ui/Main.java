@@ -120,10 +120,12 @@ private Veterinary goForIt;
 
 		goForIt.startHospitalizeVet("Pablo Londra", "1001237483", "Francis", aMedRec, petsMeds, francis);
 
-		
 
-		
-		
+		//SERVICES
+		DateIn benjiDateTeeth = new DateIn (12, 2, 2019);
+		Service benjiService = new Service (Service.TEETH, "1006017263", "Benji",  benji, benjiDateTeeth);
+		goForIt.startServiceVet("Gonzalo De Varona", "1006017263", benji, benjiService);
+	
 	}
 
 
@@ -154,7 +156,7 @@ private Veterinary goForIt;
 		System.out.println("9. Discharge a pet.");
 		System.out.println("10.Show income.");
 		System.out.println("11.Show average income per service.");
-		System.out.println("12.Show average income by week.");
+		System.out.println("12.Show service's average income by week.");
 		System.out.println("13.Show occupied mini room based on pet's full name.");
 		System.out.println("14.Show records from a pet.");
 		System.out.println("15.Edit address or phone number from a client.");
@@ -846,17 +848,17 @@ private Veterinary goForIt;
 		Calendar today = new GregorianCalendar();
 		int yearT = today.get(Calendar.YEAR);
 
-		if (year <= yearT ) {
+		if (year <= yearT) {
 
 			DateIn initialDate = new DateIn (day, month, year);
 
-			//****************************************
-			//******************TODO******************
-			//****************************************
+			System.out.println("");
+			System.out.println("Weekly average income: "+ goForIt.weeklyAverageIncome(initialDate)+" COP");
+			System.out.println("");
 
-		}else {System.out.println("");
-				   System.out.println("ERROR: Invalid date.");
-				   System.out.println("");}
+		} else {System.out.println("");
+				System.out.println("ERROR: Invalid date.");
+				System.out.println("");}
 
 	}
 	
@@ -866,4 +868,4 @@ private Veterinary goForIt;
 						
 
 
-} //final
+} //end of class
