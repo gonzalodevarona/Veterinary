@@ -283,7 +283,7 @@ public class MedRecord{
 	* @see DateIn.getYear()
 	* @see Pet.getType()
 	* @see Pet.getWeight()
-	* @see RqeMed.priceMed()
+	* @see ReqMed.priceMed()
 	* @return The final cost a hospitalization
 	*/
 

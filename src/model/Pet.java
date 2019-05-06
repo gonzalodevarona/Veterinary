@@ -49,6 +49,7 @@ public class Pet{
 	* Constructor method for class Pet which is a pet offered by the veterinary. <br>
 	* @param name The pet's name. This param must not be empty.
 	* @param type The pet's species. This param can only be "Dog", "Cat", "Bird" or "Other". It won't get any other String.
+	* @param age The pet's age. This param must be greater than zero.
 	* @param weight The pet's weight. This param must be greater than zero.
 	* @param height The pet's height. This param must be greater than zero.
 	* @param owner The person (object) who is the pet's owner. This param must not be null.
@@ -258,8 +259,8 @@ public class Pet{
 	* Allows to close the actual medical record by setting its status to close and setting the closing date <br>
 	* <b>pre:</b> The actual medical record was created before and its status is open
 	* <b>post:</b> The medical record is closed 
-	* @see MedRecord.setStatus()
-	* @see MedRecord.setDateOut()
+	* @see MedRecord.setStatus(MedRecord.CLOSED)
+	* @see MedRecord.setDateOut(todaysDate)
 	*/
 
 	public void cutItOff(){
@@ -313,7 +314,7 @@ public class Pet{
 	* This method allows to add new medicines that were prescription during the hospitalization at the patient stories. <br>
 	* <b>pre:</b> The patient clinic story must be not null. <br>
 	* <b>post:</b> New medicines were added to the patient clinic story. <br>
-	* @see MedRecord.addNewMed()
+	* @see MedRecord.addNewMed(medInMatter)
 	* @param medsName The medicine name. This param must be not null.
 	* @param medsDose The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned. This param must be not null.
 	* @param medsPrice The medicine cost by each dose. This param could be empty.
@@ -438,7 +439,7 @@ public class Pet{
 	}
 
 
-		public int weeklyIncomeCounter(DateIn initialDate){
+	public int weeklyIncomeCounter(DateIn initialDate){
 		int reply = 0;
 		int dayOfYearGiven = initialDate.calculateDayOfTheYear();
 		int dayOfYearCase = 0;
@@ -446,7 +447,7 @@ public class Pet{
 		for (int i = 0; i < services.size() ; i++ ) {
 			Service serviceInMatter = services.get(i);
 
-			if(initialDate.getYear() == serviceInMatter.getDateJob().getYear()){
+			if(initialDate.getYear() == serviceInMatter.getDateJob().getYear() || (serviceInMatter.getDateJob().getYear() - initialDate.getYear()) == 1){
 				dayOfYearCase = services.get(i).dateJobDayOfYear();
 				if((dayOfYearCase - dayOfYearGiven) <= 7){
 
@@ -474,6 +475,7 @@ public class Pet{
 
 			if (dayOfYearOfServiceInMatter >= initialDateInYear && dayOfYearOfServiceInMatter <= finalDateInYear) {
 				myServices.add(services.get(i));
+				System.out.println(services.get(i).toString());
 			}
 		}
 		

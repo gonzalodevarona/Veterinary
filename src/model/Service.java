@@ -202,7 +202,7 @@ public class Service{
 	* Information of a serviced such as: type of service, service's price, pet's owner ID, pet who got the service's name and date when the service took place.
 	* Is organized so it can be  shown to the final user<br>
 	* <b>pre:</b> This method must be invocated over an existing service <br>
-	* @see type2String
+	* @see type2String(type)
 	* @return The information of a service in a format to be shown to the final user
 	*/
 

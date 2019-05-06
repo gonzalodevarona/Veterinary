@@ -224,13 +224,15 @@ public class Person{
 
 
 	/**
-	* This method allows to get the added price for a specific service or the price of every service added<br>
-	* @see  givePet()
-	* @see Pet.addMedRec()
-	* @param petsName The given name to make the search in order to know if it matches a pet's name from a single person (object)
-	* @param newMedRec
-	* @param petsMeds
+	* Allows to  get the pet (object) and then add a new medical record with its prescribed medications <br>
+	* <b>post:</b> A new medical record with its prescribed medications is added to a pet  <br>
+	* @see  givePet(petsName)
+	* @see Pet.addMedRec(newMedRec, petsMeds)
+	* @param petsName The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @param newMedRec The new medical record to be a added to a pet (object).  This param must not be null.
+	* @param petsMeds The prescribed medications for the medical record to be a added.
 	*/
+
 	public void startHospitalizePers( String petsName, MedRecord newMedRec, ArrayList<ReqMed> petsMeds){
 		Pet pet = givePet(petsName);
 
@@ -240,6 +242,13 @@ public class Person{
 	}
 
 
+
+	/**
+	* Allows to  get a pet (object) <br>
+	* @see Pet.getName()
+	* @param theName The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @return  A pet (object) or null if there was no match
+	*/
 
 	public Pet givePet(String theName){
 
@@ -260,16 +269,28 @@ public class Person{
 	}
 
 
+	/**
+	* Allows to  get the added cost of every hospitalization that every pet of a single person has had <br>
+	* @see Pet.gatherCosts()
+	* @return  The added cost of every hospitalization that every pet of a single person has had
+	*/
+
 	public double myBill(){
 		double bill = 0.0;
 
 		for (int i = 0; i < animal.size(); i++ ) {
-
 			bill += animal.get(i).gatherCosts();
 		}
-
 		return bill;
 	}
+
+
+
+	/**
+	* Allows to count how many hospitalizations all pets from a single person has had<br>
+	* @see Pet.countMyHospitalizations()
+	* @return  How many hospitalizations all pets from a single person  has had
+	*/
 
 	public int countHospitalizations(){
 		int counter = 0;
@@ -279,6 +300,25 @@ public class Person{
 		}
 		return counter;	
 	}
+
+
+
+	/**
+	* Allows to  edit a pet's medical record by adding new symptoms, notes to a diagnosys or adding a new prescribed medication to the medical record <br>
+	* @see givePet(petsName)
+	* @see Pet.addSymptoms(symptomsEdit)
+	* @see Pet.addDiagnosys(diagnosysEdit)
+	* @see Pet.addMedicine(medsName, medsDose, medsPrice, medsFrecuency)
+	* @param petsName The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @param edition A selection of the edition that the user wants to make to an open medical record. This param is always 1,2 or 3.
+	* @param symptomsEdit The symptoms edit in case the user want to add more symptoms to a medical record.
+	* @param diagnosysEdit The diagnosys edit in case the user want to add more notes to the diagnosys of a medical record.
+	* @param medsName The name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @param medsDose The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @param medsPrice The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @param medsFrecuency The given name to make the search in order to know if it matches a pet's name from a single person (object). This param must not be empty.
+	* @return An empty message or a message saying that a new prescribed medication has been added, in both cases the edit is done
+	*/
 
 	public String locatePet2AddStuff(String petsName, int edition, String symptomsEdit, String diagnosysEdit, String medsName, double medsDose, double medsPrice, String medsFrecuency){
 		String reply = "";
@@ -300,9 +340,9 @@ public class Person{
 
 
 	/**
-	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
-	*pre: The client was created before.
-	*post: The address and /or phone number of the client is updated.
+	*This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	* <b>pre:</b> The client was created before.
+	* <b>post:</b> The address and /or phone number of the client is updated.
 	*@param newAddress The new address of the client. This param could be empty.
 	*@param newPhone The new phone number of the client. This param could be empty.
 	*/
@@ -316,6 +356,12 @@ public class Person{
 	}
 		
 
+	/**
+	* Allows to call a method in order to get the added cost of all rendered services or just one specific type of service
+	* @see petsFeeServices(serviceSelection)
+	* @param serviceSelection The specific type of service that will be used to get the cost of all rendered services. This param is always 1, 2, 3, 4 or 5.
+	* @return The cost of all rendered services of an specific type or every type
+	*/
 
 	public double allPetsServicesFees(int serviceSelection){
 		double reply = 0.0;
@@ -335,6 +381,13 @@ public class Person{
 	}
 
 
+	/**
+	* Allows to get the added cost of one specific type of rendered service
+	* @see Pet.servicesFees(serviceSelection)
+	* @param serviceSelection The specific type of service.
+	* @return The cost of every rendered service of an specific type
+	*/
+
 	public double petsFeeServices(int serviceSelection){
 		double reply = 0.0;
 		for (int i = 0; i<animal.size() ; i++ ) {
@@ -343,33 +396,25 @@ public class Person{
 		return reply;
 	}
 
+
+	/**
+	* Allows to add a new rendered service to a pet (object)
+	* <b>post:</b> The new rendered service is added to a pet (object).
+	* @see Pet.addService(newService)
+	* @param clientPet The pet (object) that will have the new rendered service. This param must not be null.
+	* @param newService The new rendered service to be added to a pet (object). This param must not be null.
+	*/
+
 	public void startServicePers(Pet clientPet, Service newService){
 		clientPet.addService(newService);
 	}
-
-
-	public String myPetsServiceReports(DateIn initialDate, DateIn finalDate){
-		String reply = "";
-
-		for (int i = 0; i<animal.size() ; i++ ) {
-
-			ArrayList<Service> myServices = animal.get(i).serviceBetweenDates(initialDate, finalDate);
-
-			for (int in = 0; in<myServices.size() ; in++ ) {
-			reply += myServices.get(in).toString();
-			}
-		}
-		return reply;
-	}
-
 
 
 	public double petsServicesWeeklyIncome(DateIn initialDate){
 		double reply = 0;
 
 		for (int i = 0; i< animal.size() ; i++) {
-			reply += animal.get(i).weeklyIncome(initialDate);
-			
+			reply += animal.get(i).weeklyIncome(initialDate);	
 		}
 
 		return reply;
@@ -380,8 +425,27 @@ public class Person{
 		int reply = 0;
 
 		for (int i = 0; i< animal.size() ; i++) {
-			reply += animal.get(i).weeklyIncomeCounter(initialDate);
-			
+			reply += animal.get(i).weeklyIncomeCounter(initialDate);	
+		}
+
+		return reply;
+	}
+
+
+
+
+	public String myPetsServiceReports(DateIn initialDate, DateIn finalDate){
+		String reply = "";
+
+		ArrayList<Service> myServices = new ArrayList<Service>();
+
+		for (int i = 0; i<animal.size() ; i++ ) {
+
+			myServices = animal.get(i).serviceBetweenDates(initialDate, finalDate);
+		}
+
+		for (int in = 0; in<myServices.size() ; in++ ) {
+			reply += myServices.get(in).toString();
 		}
 
 		return reply;
