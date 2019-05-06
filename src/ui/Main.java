@@ -268,7 +268,7 @@ private Veterinary goForIt;
 					showAverageIncome();
 					break;
 
-				//SHOW AVERAGE INCOME 
+				//SHOW AVERAGE INCOME BY WEEK
 				case 12: 
 					showAverageIncomeByWeek();
 					break;
@@ -823,6 +823,7 @@ private Veterinary goForIt;
 					DateIn finalDate = new DateIn (dayE, monthE, yearE);
 					
 					System.out.println(goForIt.datesServiceReports(initialDate, finalDate));
+					System.out.println("Too late for this one, hope i get anything close to 4.9 this time");
 
 				} else {System.out.println("");
 				   System.out.println("ERROR: Invalid date.");

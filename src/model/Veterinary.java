@@ -33,10 +33,21 @@ public class Veterinary{
 
 
 
+	/**
+	* Allows to get the veterinary's name. <br>
+	* @return The veterinary's name
+	*/
+
 	public  String getName() {
 	return name;
 	}
 
+
+	/**
+	* Allows to convert a user choise for a animal type from int to String. <br>
+	* @param choise User choise
+	* @return The animal type as String
+	*/
 
 	public  String convertChoise2Type (int choise){
 		String reply = "";
@@ -60,6 +71,19 @@ public class Veterinary{
 	} 
 
 
+	/**
+	* Allows to create the 8 roooms of a veterinary. <br>
+	* <b>pre:</b> Used when creating a veterinary(object) for the first time
+	* @param room1 The room number 1
+	* @param room2 The room number 2
+	* @param room3 The room number 3
+	* @param room4 The room number 4
+	* @param room5 The room number 5
+	* @param room6 The room number 6
+	* @param room7 The room number 7
+	* @param room8 The room number 8
+	*/
+
 	public void createRooms(MiniRoom room1, MiniRoom room2, MiniRoom room3 , MiniRoom room4, MiniRoom room5, MiniRoom room6, MiniRoom room7, MiniRoom room8){
 		room[0] = room1;
 		room[1] = room2;
@@ -69,18 +93,28 @@ public class Veterinary{
 		room[5] = room6;
 		room[6] = room7;
 		room[7] = room8;
-		
-
 	}
 
+
+	/**
+	* Allows to add a new person(object) to the <i>ArrayList Person</i> which means a new client for the veterinary <br>
+	* <b>post:</b> The new person is added to the <i>ArrayList Person</i>
+	* @param theNew The new person(object). This param must not be null
+	* @param clientsPets The new person's pets
+	*/
 
 	public  void createPerson(Person theNew, ArrayList<Pet> clientsPets){
 		
 		client.add(theNew);
-
 		theNew.createPet(clientsPets);
 
 	}
+
+
+	/**
+	* Allows to check if any mini room is available<br>
+	* @return If any mini room is available
+	*/
 
 	public boolean miniRoomAvailable(){
 		boolean reply =  false;
@@ -88,15 +122,18 @@ public class Veterinary{
 		for(int i = 0 ; i < MiniRoom.ALLROOMS && !reply ; i++){
 
 			if(room[i].getAvailable()){reply = true;};
-
 		}
 
 		return reply;
-
 	}
 
 
-
+	/**
+	* Allows to get a specific client's information such as name, unique ID, address, phone number and pets information <br>
+	* @see Person.findPerson(clients, clientsId) 
+	* @see Person.showMyinfo()
+	* @return An error message or a specific client's information
+	*/
 	public String showClientsInfo(String clients, String clientsId){
 		String reply = "*******************************************************\n";
 			   reply += "* ERROR: There is not a client with that name and ID. *\n";
@@ -111,6 +148,12 @@ public class Veterinary{
 	}
 
 
+	/**
+	* Allows to get a specific client's information such as name, unique ID, address, phone number and pets information <br>
+	* @see Person.getName()
+	* @see Person.getId()
+	* @return Null or a person (object)
+	*/
 
 	public Person findPerson(String clients, String clientsId){
 		Person thePerson = null;
@@ -477,12 +520,7 @@ public class Veterinary{
 				reports += client.get(i).myPetsServiceReports(initialDate, finalDate);	
 			}
 
-		} /*else if ( (finalDate.getYear()-initialDate.getYear()) == 1 ){
-
-		} else {
-
-		} */
-		
+		}
 		return reports;
 	}
 

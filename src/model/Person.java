@@ -157,7 +157,7 @@ public class Person{
 
 		reply += "+--------------------------------------------------------------+\n";
 		reply += "| The client's name is: "+name+"\n";
-		reply += "| The client's id is: "+id+"\n";
+		reply += "| The client's ID is: "+id+"\n";
 		reply += "| The client's address is: "+address+"\n";
 		reply += "| The client's phone number is: "+phone+"\n";
 		reply += "+--------------------------------------------------------------+\n";

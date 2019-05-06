@@ -416,6 +416,12 @@ public class Pet{
 
 
 
+	/**
+	* Allows to calculate the weekly income after a given initial date<br>
+	* @param initialDate The initial date to take as the beginning of the week. This param must not be null
+	* @return The weekly income after the initial date
+	*/
+
 	public double weeklyIncome(DateIn initialDate){
 		double reply = 0;
 		int dayOfYearGiven = initialDate.calculateDayOfTheYear();
@@ -438,6 +444,13 @@ public class Pet{
 		return reply;
 	}
 
+
+
+	/**
+	* Allows to calculate the how many services have been rendered in a week after a given initial date<br>
+	* @param initialDate The initial date to take as the beginning of the week. This param must not be null
+	* @return How many services have been rendered in a week after a given initial date
+	*/
 
 	public int weeklyIncomeCounter(DateIn initialDate){
 		int reply = 0;
